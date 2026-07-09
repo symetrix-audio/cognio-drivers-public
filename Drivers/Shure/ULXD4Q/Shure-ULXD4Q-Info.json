@@ -1,0 +1,8 @@
+{
+  "brand": "Shure",
+  "product": "ULXD4Q",
+  "version": "1.0.0",
+  "description": "Managed device driver for the Shure ULXD4Q 4-channel UHF wireless receiver.",
+  "category": "Microphone",
+  "otherSupportedProducts": []
+}

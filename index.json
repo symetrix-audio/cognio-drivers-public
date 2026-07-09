@@ -1,6 +1,19 @@
 {
-  "generatedAt": "",
-  "sourceCommit": "",
-  "count": 0,
-  "drivers": []
+  "generatedAt": "2026-07-09T20:35:46.938Z",
+  "sourceCommit": "20c446c3c9c8a32bcb3c8000547c3ae2541107af",
+  "count": 1,
+  "drivers": [
+    {
+      "brand": "Shure",
+      "product": "ULXD4Q",
+      "version": "1.0.0",
+      "description": "Managed device driver for the Shure ULXD4Q 4-channel UHF wireless receiver.",
+      "category": "Microphone",
+      "tested": "hardware",
+      "otherSupportedProducts": [],
+      "path": "Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver",
+      "infoPath": "Drivers/Shure/ULXD4Q/Shure-ULXD4Q-Info.json",
+      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver"
+    }
+  ]
 }
