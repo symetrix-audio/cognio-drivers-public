@@ -1,0 +1,17 @@
+{
+  "brand": "NETIO",
+  "product": "PDU",
+  "version": "0.1.0",
+  "description": "Managed device driver for the NETIO PDU.",
+  "category": "Power",
+  "otherSupportedProducts": [
+    "PowerPDU 4C",
+    "PowerPDU 4KS",
+    "PowerPDU 8QS",
+    "PowerPDU 8KS",
+    "PowerCable REST 101",
+    "PowerBOX 4KX",
+    "PowerBOX 4KF",
+    "PowerDIN 4PZ"
+  ]
+}

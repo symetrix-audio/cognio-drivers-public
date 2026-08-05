@@ -1,0 +1,8 @@
+{
+  "brand": "Datavideo",
+  "product": "PTZ Camera Auto Tracking",
+  "version": "0.1.0",
+  "description": "Managed device driver for Datavideo PTZ cameras with auto-tracking, using the VISCA command set over serial or VISCA-over-IP (DVIP).",
+  "category": "Cameras",
+  "otherSupportedProducts": []
+}

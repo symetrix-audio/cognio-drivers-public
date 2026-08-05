@@ -1,0 +1,8 @@
+{
+  "brand": "Bitfocus",
+  "product": "Companion",
+  "version": "0.1.0",
+  "description": "Managed device driver for the Bitfocus Companion.",
+  "category": "Control",
+  "otherSupportedProducts": []
+}
