@@ -118,8 +118,38 @@
     gap: 6px 18px;
   }
   .card .title { grid-column: 1; margin: 0; font-size: 18px; }
-  .card .brand { grid-column: 1; color: var(--muted); font-size: 13px; margin: 0 0 6px; }
+  .brand-row {
+    grid-column: 1;
+    display: flex; align-items: center; gap: 8px;
+    margin: 0 0 6px;
+  }
+  .brand-logo {
+    height: 20px; width: auto; max-width: 72px;
+    object-fit: contain; flex: none;
+  }
+  .card .brand { color: var(--muted); font-size: 13px; margin: 0; }
   .card .desc { grid-column: 1; margin: 6px 0 0; font-size: 14px; }
+  .shot { grid-column: 1; margin: 12px 0 0; }
+  .shot img {
+    max-width: 220px; max-height: 140px; width: auto; height: auto;
+    display: block; object-fit: contain; background: #fff;
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 4px; cursor: zoom-in; transition: border-color .12s;
+  }
+  .shot img:hover { border-color: var(--accent); }
+
+  /* ---- Lightbox (click a screenshot to enlarge) ---- */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 100;
+    display: none; align-items: center; justify-content: center;
+    padding: 24px; background: rgba(12, 24, 36, .82); cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 92vw; max-height: 92vh; width: auto; height: auto;
+    border-radius: 10px; box-shadow: 0 12px 48px rgba(0, 0, 0, .45);
+    background: #fff;
+  }
   .card .others { grid-column: 1; margin: 8px 0 0; font-size: 13px; color: var(--muted); }
   .badges { grid-column: 1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
   .badge {
@@ -180,6 +210,11 @@
 <footer class="site">
   Cognio Driver Library · drivers are provided as <code>.cogdriver</code> files.
 </footer>
+
+<!-- Full-size screenshot overlay. Hidden until a card thumbnail is clicked. -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <img id="lightboxImg" src="" alt="">
+</div>
 
 <script>
 (function () {
@@ -358,9 +393,29 @@
         '" rel="noopener">Download</a>'
       : "";
 
+    // Brand logo (optional): small, sits inline before the brand name. Only the
+    // release pipeline emits brandLogoUrl, and only when the image shipped —
+    // so a missing logo simply renders the brand text alone. onerror guards the
+    // rare case of a URL that 404s, dropping just the <img>.
+    var logo = d.brandLogoUrl
+      ? '<img class="brand-logo" src="' + esc(d.brandLogoUrl) +
+        '" alt="' + esc(d.brand || "") + ' logo" loading="lazy" ' +
+        'onerror="this.remove()">'
+      : "";
+
+    // Driver screenshot (optional): a medium thumbnail the visitor can click to
+    // open full size in the lightbox. Absent screenshotUrl -> no thumbnail.
+    var shot = d.screenshotUrl
+      ? '<div class="shot"><img src="' + esc(d.screenshotUrl) +
+        '" alt="' + esc((d.product || "driver") + " screenshot") + '" loading="lazy" ' +
+        'onerror="this.closest(\'.shot\').remove()"></div>'
+      : "";
+
     return '<article class="card">' +
       '<h3 class="title">' + esc(d.product || "Unnamed driver") + '</h3>' +
-      '<p class="brand">' + esc(d.brand || "") + '</p>' +
+      '<div class="brand-row">' + logo +
+        '<span class="brand">' + esc(d.brand || "") + '</span>' +
+      '</div>' +
       '<div class="badges">' +
         (d.category ? '<span class="badge cat">' + esc(d.category) + '</span>' : "") +
         (d.version ? '<span class="badge ver">v' + esc(d.version) + '</span>' : "") +
@@ -368,9 +423,36 @@
       '</div>' +
       (d.description ? '<p class="desc">' + esc(d.description) + '</p>' : "") +
       others +
+      shot +
       dl +
     '</article>';
   }
+
+  // ---- lightbox ----
+  var elLightbox = document.getElementById("lightbox");
+  var elLightboxImg = document.getElementById("lightboxImg");
+
+  function openLightbox(src, alt) {
+    elLightboxImg.src = src;
+    elLightboxImg.alt = alt || "";
+    elLightbox.classList.add("open");
+    elLightbox.setAttribute("aria-hidden", "false");
+  }
+  function closeLightbox() {
+    elLightbox.classList.remove("open");
+    elLightbox.setAttribute("aria-hidden", "true");
+    elLightboxImg.src = "";           // release the full-size image
+  }
+
+  // Delegate: a click on any screenshot thumbnail opens it full size.
+  elResults.addEventListener("click", function (e) {
+    var img = e.target.closest(".shot img");
+    if (img) openLightbox(img.src, img.alt);
+  });
+  elLightbox.addEventListener("click", closeLightbox);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeLightbox();
+  });
 
   elSearch.addEventListener("input", function () {
     state.search = elSearch.value.trim().toLowerCase();
