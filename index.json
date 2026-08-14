@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-05T18:39:24.326Z",
-  "sourceCommit": "bcb04977ac8a59b22119e3fc25166b8998f8605d",
+  "generatedAt": "2026-08-14T15:43:21.936Z",
+  "sourceCommit": "3ce35d59ade205b6f777b46edf80f376fe2056a4",
   "count": 8,
   "drivers": [
     {
@@ -106,7 +106,11 @@
       "otherSupportedProducts": [],
       "path": "Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver",
       "infoPath": "Drivers/Shure/ULXD4Q/Shure-ULXD4Q-Info.json",
-      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver"
+      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver",
+      "screenshotPath": "Drivers/Shure/ULXD4Q/Shure-ULXD4Q.png",
+      "screenshotUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/ULXD4Q/Shure-ULXD4Q.png",
+      "brandLogoPath": "Drivers/Shure/Shure.png",
+      "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/Shure.png"
     }
   ]
 }
