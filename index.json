@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-14T21:12:22.372Z",
-  "sourceCommit": "c5e5efd7000ba10783c7825b1a8c90e616975252",
-  "count": 8,
+  "generatedAt": "2026-08-14T21:21:26.076Z",
+  "sourceCommit": "d69f04902273cd447e79ae2138ec6850faa153b8",
+  "count": 7,
   "drivers": [
     {
       "brand": "Bitfocus",
@@ -13,7 +13,11 @@
       "otherSupportedProducts": [],
       "path": "Drivers/Bitfocus/Companion/Bitfocus-Companion.cogdriver",
       "infoPath": "Drivers/Bitfocus/Companion/Bitfocus-Companion-Info.json",
-      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Bitfocus/Companion/Bitfocus-Companion.cogdriver"
+      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Bitfocus/Companion/Bitfocus-Companion.cogdriver",
+      "screenshotPath": "Drivers/Bitfocus/Companion/Bitfocus-Companion.png",
+      "screenshotUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Bitfocus/Companion/Bitfocus-Companion.png",
+      "brandLogoPath": "Drivers/Bitfocus/Bitfocus.png",
+      "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Bitfocus/Bitfocus.png"
     },
     {
       "brand": "Datavideo",
@@ -42,22 +46,10 @@
       "path": "Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking.cogdriver",
       "infoPath": "Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking.cogdriver",
+      "screenshotPath": "Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking.png",
+      "screenshotUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking.png",
       "brandLogoPath": "Drivers/Datavideo/Datavideo.png",
       "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/Datavideo.png"
-    },
-    {
-      "brand": "Epson",
-      "product": "Projector",
-      "version": "0.1.0",
-      "description": "Managed device driver for Projectors that support Epson PJ Link protocol.",
-      "category": "Video",
-      "tested": "untested",
-      "otherSupportedProducts": [],
-      "path": "Drivers/Epson/Projector/Epson.cogdriver",
-      "infoPath": "Drivers/Epson/Projector/Epson-Info.json",
-      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Epson/Projector/Epson.cogdriver",
-      "brandLogoPath": "Drivers/Epson/Epson.png",
-      "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Epson/Epson.png"
     },
     {
       "brand": "Lab Gruppen",
@@ -69,7 +61,11 @@
       "otherSupportedProducts": [],
       "path": "Drivers/Lab Gruppen/D Series Amplifier/Lab-Gruppen-D-Series-Amplifier.cogdriver",
       "infoPath": "Drivers/Lab Gruppen/D Series Amplifier/Lab-Gruppen-D-Series-Amplifier-Info.json",
-      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Lab Gruppen/D Series Amplifier/Lab-Gruppen-D-Series-Amplifier.cogdriver"
+      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Lab Gruppen/D Series Amplifier/Lab-Gruppen-D-Series-Amplifier.cogdriver",
+      "screenshotPath": "Drivers/Lab Gruppen/D Series Amplifier/Lab-Gruppen-D-Series-Amplifier.png",
+      "screenshotUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Lab Gruppen/D Series Amplifier/Lab-Gruppen-D-Series-Amplifier.png",
+      "brandLogoPath": "Drivers/Lab Gruppen/Lab Gruppen.png",
+      "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Lab Gruppen/Lab Gruppen.png"
     },
     {
       "brand": "NETIO",
@@ -90,7 +86,11 @@
       ],
       "path": "Drivers/NETIO/PDU/NETIO-PDU.cogdriver",
       "infoPath": "Drivers/NETIO/PDU/NETIO-PDU-Info.json",
-      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/NETIO/PDU/NETIO-PDU.cogdriver"
+      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/NETIO/PDU/NETIO-PDU.cogdriver",
+      "screenshotPath": "Drivers/NETIO/PDU/NETIO-PDU.png",
+      "screenshotUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/NETIO/PDU/NETIO-PDU.png",
+      "brandLogoPath": "Drivers/NETIO/NETIO.png",
+      "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/NETIO/NETIO.png"
     },
     {
       "brand": "PJLINK",
@@ -102,7 +102,9 @@
       "otherSupportedProducts": [],
       "path": "Drivers/Other/PJ Link/PJ-Link.cogdriver",
       "infoPath": "Drivers/Other/PJ Link/PJ-Link-Info.json",
-      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Other/PJ Link/PJ-Link.cogdriver"
+      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Other/PJ Link/PJ-Link.cogdriver",
+      "screenshotPath": "Drivers/Other/PJ Link/PJ-Link.png",
+      "screenshotUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Other/PJ Link/PJ-Link.png"
     },
     {
       "brand": "Shure",

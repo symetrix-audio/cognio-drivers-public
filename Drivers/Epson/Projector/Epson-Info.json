@@ -1,8 +1,0 @@
-{
-  "brand": "Epson",
-  "product": "Projector",
-  "version": "0.1.0",
-  "description": "Managed device driver for Projectors that support Epson PJ Link protocol.",
-  "category": "Video",
-  "otherSupportedProducts": []
-}
