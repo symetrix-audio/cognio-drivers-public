@@ -17,9 +17,17 @@ Once GitHub Pages is enabled (Settings → Pages → Deploy from a branch →
 
 ## Contents
 
-- `index.html` — the driver library page (hand-written, no build step).
+- `index.html` — the driver library page (hand-written, no build step). When a
+  driver's `index.json` entry includes image URLs it shows the brand logo inline
+  next to the brand name and the driver screenshot as a clickable thumbnail that
+  opens full size in a lightbox.
 - `index.json` — machine-readable catalog of released drivers, regenerated on
-  each release. Starts empty until the first driver is released.
+  each release. Starts empty until the first driver is released. Each entry
+  optionally carries `brandLogoUrl` and `screenshotUrl` (with matching
+  `brandLogoPath` / `screenshotPath`), present only when that image was shipped —
+  so an imageless driver still renders cleanly.
 - `Drivers/<Brand>/<Product>/` — each released driver's `.cogdriver` bundle and
-  `-Info.json` metadata. Created and maintained automatically by the release
-  pipeline; do not edit by hand.
+  `-Info.json` metadata, plus (when provided) the driver screenshot
+  `<Slug>.png`. The shared brand logo lives one level up at
+  `Drivers/<Brand>/<Brand>.png`. All created and maintained automatically by the
+  release pipeline; do not edit by hand.
