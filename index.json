@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-14T15:43:21.936Z",
-  "sourceCommit": "3ce35d59ade205b6f777b46edf80f376fe2056a4",
+  "generatedAt": "2026-08-14T19:01:13.172Z",
+  "sourceCommit": "c5e5efd7000ba10783c7825b1a8c90e616975252",
   "count": 8,
   "drivers": [
     {
@@ -25,7 +25,11 @@
       "otherSupportedProducts": [],
       "path": "Drivers/Datavideo/PTZ Camera/Datavideo-PTZ-Camera.cogdriver",
       "infoPath": "Drivers/Datavideo/PTZ Camera/Datavideo-PTZ-Camera-Info.json",
-      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/PTZ Camera/Datavideo-PTZ-Camera.cogdriver"
+      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/PTZ Camera/Datavideo-PTZ-Camera.cogdriver",
+      "screenshotPath": "Drivers/Datavideo/PTZ Camera/Datavideo-PTZ-Camera.png",
+      "screenshotUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/PTZ Camera/Datavideo-PTZ-Camera.png",
+      "brandLogoPath": "Drivers/Datavideo/Datavideo.png",
+      "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/Datavideo.png"
     },
     {
       "brand": "Datavideo",
@@ -37,7 +41,9 @@
       "otherSupportedProducts": [],
       "path": "Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking.cogdriver",
       "infoPath": "Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking-Info.json",
-      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking.cogdriver"
+      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking.cogdriver",
+      "brandLogoPath": "Drivers/Datavideo/Datavideo.png",
+      "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/Datavideo.png"
     },
     {
       "brand": "Epson",
@@ -49,7 +55,9 @@
       "otherSupportedProducts": [],
       "path": "Drivers/Epson/Projector/Epson.cogdriver",
       "infoPath": "Drivers/Epson/Projector/Epson-Info.json",
-      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Epson/Projector/Epson.cogdriver"
+      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Epson/Projector/Epson.cogdriver",
+      "brandLogoPath": "Drivers/Epson/Epson.png",
+      "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Epson/Epson.png"
     },
     {
       "brand": "Lab Gruppen",
