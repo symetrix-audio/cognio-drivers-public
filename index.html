@@ -158,6 +158,7 @@
   }
   .badge.cat { background: #e4eefb; color: #0a4f9c; }
   .badge.ver { background: #eef2f6; color: #33475b; }
+  .badge.min { background: #ece4fb; color: #5b2fa0; }
   .badge.tested-hardware { background: #e2f3e8; color: #1c6b3a; }
   .badge.tested-3rd { background: #fdefdc; color: #8a5a12; }
   .badge.tested-untested { background: #eef1f4; color: #61707e; }
@@ -419,6 +420,7 @@
       '<div class="badges">' +
         (d.category ? '<span class="badge cat">' + esc(d.category) + '</span>' : "") +
         (d.version ? '<span class="badge ver">v' + esc(d.version) + '</span>' : "") +
+        (d.minVersion ? '<span class="badge min" title="Minimum Cognio Design Ops version required">Cognio ' + esc(d.minVersion) + '+</span>' : "") +
         '<span class="badge ' + testedClass + '">' + esc(testedText) + '</span>' +
       '</div>' +
       (d.description ? '<p class="desc">' + esc(d.description) + '</p>' : "") +
