@@ -151,6 +151,10 @@
     background: #fff;
   }
   .card .others { grid-column: 1; margin: 8px 0 0; font-size: 13px; color: var(--muted); }
+  .card .product-link { grid-column: 1; margin: 8px 0 0; font-size: 13px; }
+  .card .product-link a { text-decoration: none; font-weight: 600; }
+  .card .product-link a:hover { text-decoration: underline; }
+  .card .product-link .ext { font-size: 11px; opacity: .7; }
   .badges { grid-column: 1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
   .badge {
     font-size: 12px; padding: 2px 9px; border-radius: 999px;
@@ -389,6 +393,15 @@
       ? '<div class="others">Also supports: ' + esc(d.otherSupportedProducts.join(", ")) + '</div>'
       : "";
 
+    // Manufacturer product page (optional): the release pipeline only emits
+    // productUrl when the author filled it in, so a blank/absent link simply
+    // renders nothing. Opens in a new tab; noopener for safety.
+    var productLink = d.productUrl
+      ? '<div class="product-link"><a href="' + esc(d.productUrl) +
+        '" target="_blank" rel="noopener">Manufacturer product page ' +
+        '<span class="ext" aria-hidden="true">↗</span></a></div>'
+      : "";
+
     var dl = d.downloadUrl
       ? '<a class="dl" href="' + esc(d.downloadUrl) + '" download="' + esc(fileName) +
         '" rel="noopener">Download</a>'
@@ -425,6 +438,7 @@
       '</div>' +
       (d.description ? '<p class="desc">' + esc(d.description) + '</p>' : "") +
       others +
+      productLink +
       shot +
       dl +
     '</article>';

@@ -28,7 +28,10 @@ Once GitHub Pages is enabled (Settings → Pages → Deploy from a branch →
   carries the driver's `version` and `minVersion` (the minimum Cognio Design Ops
   version that supports it), and optionally `brandLogoUrl` and `screenshotUrl`
   (with matching `brandLogoPath` / `screenshotPath`), present only when that
-  image was shipped — so an imageless driver still renders cleanly.
+  image was shipped — so an imageless driver still renders cleanly. An entry may
+  also carry `productUrl`, a link to the manufacturer's product page for the
+  3rd-party device, present only when the driver author filled it in; the card
+  renders it as a "Manufacturer product page" link.
 - `Drivers/<Brand>/<Product>/` — each released driver's `.cogdriver` bundle and
   `-Info.json` metadata, plus (when provided) the driver screenshot
   `<Slug>.png`. The shared brand logo lives one level up at
