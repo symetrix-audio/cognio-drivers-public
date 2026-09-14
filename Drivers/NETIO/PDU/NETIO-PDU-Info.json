@@ -2,8 +2,10 @@
   "brand": "NETIO",
   "product": "PDU",
   "version": "0.1.0",
+  "minVersion": "1.0.1",
   "description": "Managed device driver for the NETIO PDU.",
   "category": "Power",
+  "productUrl": "",
   "otherSupportedProducts": [
     "PowerPDU 4C",
     "PowerPDU 4KS",

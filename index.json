@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-14T21:21:26.076Z",
-  "sourceCommit": "d69f04902273cd447e79ae2138ec6850faa153b8",
+  "generatedAt": "2026-09-14T15:36:41.488Z",
+  "sourceCommit": "c6266d33519a909787487e1eb4243d723047a4af",
   "count": 7,
   "drivers": [
     {
@@ -124,6 +124,7 @@
       "path": "Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver",
       "infoPath": "Drivers/Shure/ULXD4Q/Shure-ULXD4Q-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver",
+      "productUrl": "https://www.shure.com/en-US/products/wireless-systems/ulx-d_digital_wireless/ulxd4q",
       "screenshotPath": "Drivers/Shure/ULXD4Q/Shure-ULXD4Q.png",
       "screenshotUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/ULXD4Q/Shure-ULXD4Q.png",
       "brandLogoPath": "Drivers/Shure/Shure.png",

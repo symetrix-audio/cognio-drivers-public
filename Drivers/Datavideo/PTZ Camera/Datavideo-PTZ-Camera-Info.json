@@ -2,7 +2,9 @@
   "brand": "Datavideo",
   "product": "PTZ Camera",
   "version": "0.1.0",
+  "minVersion": "1.0.1",
   "description": "Managed device driver for Datavideo PTZ cameras using the VISCA command set over serial or VISCA-over-IP (DVIP).",
   "category": "Cameras",
+  "productUrl": "",
   "otherSupportedProducts": []
 }

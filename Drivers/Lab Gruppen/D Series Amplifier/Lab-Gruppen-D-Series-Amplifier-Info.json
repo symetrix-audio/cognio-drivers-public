@@ -2,7 +2,9 @@
   "brand": "Lab Gruppen",
   "product": "D Series Amplifier",
   "version": "0.1.0",
+  "minVersion": "1.0.1",
   "description": "Managed device driver for the Lab Gruppen D Series Amplifier.",
   "category": "Amplification",
+  "productUrl": "",
   "otherSupportedProducts": []
 }
