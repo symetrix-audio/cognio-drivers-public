@@ -1,0 +1,10 @@
+{
+  "brand": "AREC",
+  "product": "Media Station",
+  "version": "0.1.1",
+  "minVersion": "1.1.1",
+  "description": "Managed device driver for the AREC Media Station.",
+  "category": "Streaming",
+  "productUrl": "",
+  "otherSupportedProducts": []
+}

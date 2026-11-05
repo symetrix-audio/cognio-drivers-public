@@ -1,0 +1,10 @@
+{
+  "brand": "BirdDog",
+  "product": "BD4KHDMI",
+  "version": "0.1.0",
+  "minVersion": "1.1.1",
+  "description": "Managed device driver for the BirdDog BD4KHDMI.",
+  "category": "Video",
+  "productUrl": "",
+  "otherSupportedProducts": []
+}
