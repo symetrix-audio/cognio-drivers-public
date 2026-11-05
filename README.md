@@ -32,8 +32,8 @@ Consent Mode v2:
   `driver_product` and `driver_version`. Register those three as event-scoped
   custom dimensions in GA Admin to report on them.
 
-Set `PRIVACY_URL` in `index.html` to show a privacy-policy link in the banner and
-footer.
+The banner and footer link to the Symetrix privacy policy, set by `PRIVACY_URL`
+in `index.html`.
 
 ## Contents
 
