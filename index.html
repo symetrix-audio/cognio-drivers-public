@@ -268,20 +268,22 @@
     { id: "tested",   key: "tested",   label: "Validation" }
   ];
 
-  // Friendly labels for the `tested` values.
+  // Public labels for the `tested` values. The stored values (untested /
+  // hardware / 3rd party) are the private repo's manifest vocabulary and stay
+  // as-is; only what visitors see is renamed, as a maturity ladder.
   var TESTED_LABEL = {
-    "untested": "Untested",
-    "hardware": "Hardware tested",
-    "3rd party": "3rd-party validated"
+    "untested": "Spec-built",
+    "hardware": "Hardware-verified",
+    "3rd party": "Field-validated"
   };
 
   // What each `tested` level means, shown under the Validation filter. Mirrors
   // the definitions in the private cognio-drivers README; listed from least to
   // most validated, and always all three so the scale reads as a whole.
   var TESTED_HELP = [
-    ["untested",  "No real-world validation yet. The driver has not been tested against a real device."],
+    ["untested",  "Built from the manufacturer’s published control protocol. Not yet tested on a real device."],
     ["hardware",  "Tested by the driver author against the real device."],
-    ["3rd party", "Validated in the field by a customer or the device's manufacturer."]
+    ["3rd party", "Confirmed in a live installation by a customer or the manufacturer."]
   ];
 
   var state = {
@@ -340,8 +342,13 @@
       if (v == null || v === "") return;
       counts[v] = (counts[v] || 0) + 1;
     });
+    // Validation reads as a ladder (least to most validated), so keep it in
+    // TESTED_HELP order; every other facet is alphabetical.
+    var rank = key === "tested"
+      ? function (v) { var i = TESTED_HELP.map(function (r) { return r[0]; }).indexOf(v); return i < 0 ? 99 : i; }
+      : null;
     return Object.keys(counts).sort(function (a, b) {
-      return a.localeCompare(b);
+      return rank ? (rank(a) - rank(b)) || a.localeCompare(b) : a.localeCompare(b);
     }).map(function (v) { return { value: v, count: counts[v] }; });
   }
 
@@ -458,7 +465,7 @@
     var fileName = String(d.path || d.downloadUrl || "").split("/").pop() || "driver.cogdriver";
     var testedClass = d.tested === "hardware" ? "tested-hardware"
       : d.tested === "3rd party" ? "tested-3rd" : "tested-untested";
-    var testedText = TESTED_LABEL[d.tested] || d.tested || "Untested";
+    var testedText = TESTED_LABEL[d.tested] || d.tested || TESTED_LABEL.untested;
 
     var others = (Array.isArray(d.otherSupportedProducts) && d.otherSupportedProducts.length)
       ? '<div class="others">Also supports: ' + esc(d.otherSupportedProducts.join(", ")) + '</div>'
