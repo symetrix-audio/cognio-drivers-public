@@ -37,7 +37,8 @@ Once GitHub Pages is enabled (Settings → Pages → Deploy from a branch →
   `https://drivers.symetrix.co/#shure-ulxd4q` for
   `Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver`. Opening that link scrolls to
   the card and briefly highlights it (clearing any filters that would hide it).
-  Each card's **Copy link** button puts that URL on the clipboard. The slug
+  Each card's **Copy link** button (shown when you hover over the card)
+  puts that URL on the clipboard. The slug
   doesn't change between driver versions, so links stay valid across releases;
   a link to a driver that is no longer listed just opens the full catalog.
 - `Drivers/<Brand>/<Product>/` — each released driver's `.cogdriver` bundle and
