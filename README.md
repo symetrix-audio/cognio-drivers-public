@@ -15,6 +15,26 @@ Once GitHub Pages is enabled (Settings → Pages → Deploy from a branch →
 
 **https://symetrix-audio.github.io/cognio-drivers-public/**
 
+## Analytics and consent
+
+The page reports to Google Analytics 4 (measurement ID `G-99Z52XH46H`) using
+Consent Mode v2:
+
+- **EEA / UK / Switzerland:** analytics is off by default. No GA cookies are
+  set until the visitor clicks **Accept** in the consent banner.
+- **Everywhere else:** analytics is on by default. **Decline** opts out.
+- Advertising features (ad storage, Google signals, ad personalization) are
+  always off. GA cookies are host-only, so they're never shared with
+  www.symetrix.co.
+- The visitor's choice is saved in their browser. **Cookie settings** in the
+  footer reopens the banner so they can change it.
+- Every **Download** click sends a `file_download` event with `driver_brand`,
+  `driver_product` and `driver_version`. Register those three as event-scoped
+  custom dimensions in GA Admin to report on them.
+
+The banner and footer link to the Symetrix privacy policy, set by `PRIVACY_URL`
+in `index.html`.
+
 ## Contents
 
 - `index.html` — the driver library page (hand-written, no build step). Each
