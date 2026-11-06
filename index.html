@@ -118,6 +118,29 @@
     gap: 6px 18px;
   }
   .card .title { grid-column: 1; margin: 0; font-size: 18px; }
+  /* Deep links (#<driver-slug>): leave breathing room above the card when the
+     page scrolls to it, and flash a highlight so the visitor sees which one. */
+  .card { scroll-margin-top: 16px; }
+  .card.linked { animation: linked-flash 2.4s ease-out; }
+  @keyframes linked-flash {
+    0%, 35% { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(10, 102, 194, .28), var(--shadow); }
+    100%    { border-color: var(--line);   box-shadow: var(--shadow); }
+  }
+  .permalink {
+    margin-left: 8px; font-size: 12px; font-weight: 500;
+    color: var(--muted); text-decoration: none; white-space: nowrap;
+    vertical-align: middle;
+  }
+  .permalink:hover, .permalink:focus-visible { color: var(--accent); text-decoration: underline; }
+  .permalink.copied { color: #1c6b3a; }
+  /* Keep cards uncluttered: "Copy link" fades in only while the card is
+     hovered (or the link has keyboard focus / just copied). opacity rather
+     than display so the title never shifts. Touch screens can't hover, so
+     the link stays visible there. */
+  @media (hover: hover) {
+    .permalink { opacity: 0; transition: opacity .15s; }
+    .card:hover .permalink, .permalink:focus-visible, .permalink.copied { opacity: 1; }
+  }
   .brand-row {
     grid-column: 1;
     display: flex; align-items: center; gap: 8px;
@@ -259,6 +282,16 @@
     });
   }
 
+  // Stable anchor id for a driver card: the bundle's file slug, lowercased
+  // (Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver -> "shure-ulxd4q"). The slug is
+  // unique per driver and doesn't change between versions, so a link support
+  // sends today still lands on the right card after the driver is updated.
+  function driverId(d) {
+    var file = String(d.path || "").split("/").pop().replace(/\.cogdriver$/i, "");
+    var base = file || ((d.brand || "") + "-" + (d.product || ""));
+    return base.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+
   // ---- data load ----
   fetch("./index.json", { cache: "no-cache" })
     .then(function (r) {
@@ -269,6 +302,7 @@
       state.all = Array.isArray(data && data.drivers) ? data.drivers : [];
       buildFilters();
       render();
+      goToHash();
     })
     .catch(function () {
       // A missing index.json (before the first release) is an expected state,
@@ -425,8 +459,11 @@
         'onerror="this.closest(\'.shot\').remove()"></div>'
       : "";
 
-    return '<article class="card">' +
-      '<h3 class="title">' + esc(d.product || "Unnamed driver") + '</h3>' +
+    var id = driverId(d);
+    return '<article class="card" id="' + esc(id) + '">' +
+      '<h3 class="title">' + esc(d.product || "Unnamed driver") +
+        '<a class="permalink" href="#' + esc(id) + '" title="Copy a link to this driver">Copy link</a>' +
+      '</h3>' +
       '<div class="brand-row">' + logo +
         '<span class="brand">' + esc(d.brand || "") + '</span>' +
       '</div>' +
@@ -470,17 +507,105 @@
     if (e.key === "Escape") closeLightbox();
   });
 
-  elSearch.addEventListener("input", function () {
-    state.search = elSearch.value.trim().toLowerCase();
-    render();
-  });
-
-  elClear.addEventListener("click", function () {
+  // ---- deep links ----
+  // The page renders after index.json loads, so the browser's own jump-to-#id
+  // has nothing to land on; do it ourselves once the cards exist, and again
+  // whenever the hash changes (e.g. a link pasted into an already-open tab).
+  function resetFilters() {
     state.search = "";
     elSearch.value = "";
     FACETS.forEach(function (f) { state.selected[f.id].clear(); });
     buildFilters();
     render();
+  }
+
+  function goToHash() {
+    var id;
+    try { id = decodeURIComponent(location.hash.slice(1)).toLowerCase(); }
+    catch (e) { return; }
+    if (!id) return;
+    var exists = state.all.some(function (d) { return driverId(d) === id; });
+    if (!exists) return;                       // unknown/retired driver: just show the list
+    var card = document.getElementById(id);
+    if (!card) {                               // hidden by the current filters
+      resetFilters();
+      card = document.getElementById(id);
+    }
+    if (!card) return;
+    card.scrollIntoView({ block: "start" });
+    flash(card);
+    keepInView(card);
+  }
+
+  function flash(card) {
+    card.classList.remove("linked");
+    void card.offsetWidth;                     // restart the animation
+    card.classList.add("linked");
+  }
+
+  // Screenshots above the target load lazily and can push it down after we
+  // scroll. For a couple of seconds, re-align when one finishes loading —
+  // unless the visitor has started scrolling on their own.
+  function keepInView(card) {
+    var done = false;
+    function stop() {
+      if (done) return;
+      done = true;
+      elResults.removeEventListener("load", onLoad, true);
+      ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (t) {
+        window.removeEventListener(t, stop, true);
+      });
+    }
+    function onLoad(e) {
+      if (e.target.tagName === "IMG" && card.isConnected &&
+          (e.target.compareDocumentPosition(card) & Node.DOCUMENT_POSITION_FOLLOWING)) {
+        card.scrollIntoView({ block: "start" });
+      }
+    }
+    elResults.addEventListener("load", onLoad, true);
+    ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (t) {
+      window.addEventListener(t, stop, true);
+    });
+    setTimeout(stop, 2500);
+  }
+
+  window.addEventListener("hashchange", goToHash);
+
+  // "Copy link" on a card: put the card's full URL on the clipboard and in the
+  // address bar, without jumping the page. If the clipboard is unavailable the
+  // address bar still shows the link, so it can be copied by hand.
+  elResults.addEventListener("click", function (e) {
+    var a = e.target.closest(".permalink");
+    if (!a) return;
+    e.preventDefault();
+    var id = a.getAttribute("href").slice(1);
+    var url = location.href.split("#")[0] + "#" + id;
+    history.replaceState(null, "", "#" + id);
+    var card = document.getElementById(id);
+    if (card) flash(card);
+    function done(text) {
+      a.textContent = text;
+      a.classList.add("copied");
+      setTimeout(function () {
+        a.textContent = "Copy link";
+        a.classList.remove("copied");
+      }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(
+        function () { done("Link copied"); },
+        function () { done("Link in address bar"); }
+      );
+    } else {
+      done("Link in address bar");
+    }
   });
+
+  elSearch.addEventListener("input", function () {
+    state.search = elSearch.value.trim().toLowerCase();
+    render();
+  });
+
+  elClear.addEventListener("click", resetFilters);
 })();
 </script>

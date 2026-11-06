@@ -32,6 +32,15 @@ Once GitHub Pages is enabled (Settings → Pages → Deploy from a branch →
   also carry `productUrl`, a link to the manufacturer's product page for the
   3rd-party device, present only when the driver author filled it in; the card
   renders it as a "Manufacturer product page" link.
+- **Linking to a driver.** Every card has an anchor named after the driver's
+  file slug, lowercased — e.g.
+  `https://drivers.symetrix.co/#shure-ulxd4q` for
+  `Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver`. Opening that link scrolls to
+  the card and briefly highlights it (clearing any filters that would hide it).
+  Each card's **Copy link** button (shown when you hover over the card)
+  puts that URL on the clipboard. The slug
+  doesn't change between driver versions, so links stay valid across releases;
+  a link to a driver that is no longer listed just opens the full catalog.
 - `Drivers/<Brand>/<Product>/` — each released driver's `.cogdriver` bundle and
   `-Info.json` metadata, plus (when provided) the driver screenshot
   `<Slug>.png`. The shared brand logo lives one level up at
