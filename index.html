@@ -93,6 +93,17 @@
   .filter-list label:hover { background: var(--chip); }
   .filter-list input { accent-color: var(--accent); width: 15px; height: 15px; }
   .filter-list .count { margin-left: auto; color: var(--muted); font-size: 12px; }
+  /* Optional explainer under a facet's options (e.g. what each Validation
+     level means). */
+  .filter-note {
+    border-top: 1px solid var(--line);
+    padding: 10px 14px 12px;
+    font-size: 12px; line-height: 1.45; color: var(--muted);
+  }
+  .filter-note dl { margin: 0; }
+  .filter-note dt { font-weight: 600; color: var(--ink); }
+  .filter-note dd { margin: 0 0 6px; }
+  .filter-note dd:last-child { margin-bottom: 0; }
   .clear-all {
     background: none; border: none; color: var(--accent);
     font-size: 13px; cursor: pointer; padding: 4px 2px; margin-bottom: 12px;
@@ -264,6 +275,15 @@
     "3rd party": "3rd-party validated"
   };
 
+  // What each `tested` level means, shown under the Validation filter. Mirrors
+  // the definitions in the private cognio-drivers README; listed from least to
+  // most validated, and always all three so the scale reads as a whole.
+  var TESTED_HELP = [
+    ["untested",  "No real-world validation yet. The driver has not been tested against a real device."],
+    ["hardware",  "Tested by the driver author against the real device."],
+    ["3rd party", "Validated in the field by a customer or the device's manufacturer."]
+  ];
+
   var state = {
     all: [],                                   // every driver from index.json
     search: "",
@@ -346,8 +366,25 @@
         list.appendChild(makeRow(facet, o.value, display, o.count));
       });
       group.appendChild(list);
+      if (facet.key === "tested") group.appendChild(testedNote());
       elFilters.appendChild(group);
     });
+  }
+
+  function testedNote() {
+    var note = document.createElement("div");
+    note.className = "filter-note";
+    var dl = document.createElement("dl");
+    TESTED_HELP.forEach(function (row) {
+      var dt = document.createElement("dt");
+      dt.textContent = TESTED_LABEL[row[0]];
+      var dd = document.createElement("dd");
+      dd.textContent = row[1];
+      dl.appendChild(dt);
+      dl.appendChild(dd);
+    });
+    note.appendChild(dl);
+    return note;
   }
 
   function makeRow(facet, value, display, count) {
