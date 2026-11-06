@@ -1,0 +1,10 @@
+{
+  "brand": "Audinate",
+  "product": "DDM",
+  "version": "1.0.0",
+  "minVersion": "1.1.1",
+  "description": "Managed device driver for Audinate Dante Domain Manager (DDM), controlled via its GraphQL Managed API.",
+  "category": "Control",
+  "productUrl": "",
+  "otherSupportedProducts": []
+}

@@ -1,0 +1,10 @@
+{
+  "brand": "Renkus-Heinz",
+  "product": "Iconyx",
+  "version": "1.0.0",
+  "minVersion": "1.1.1",
+  "description": "Managed device driver for the Renkus-Heinz Iconyx.",
+  "category": "Speakers",
+  "productUrl": "",
+  "otherSupportedProducts": []
+}

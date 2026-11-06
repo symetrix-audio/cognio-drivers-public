@@ -1,0 +1,10 @@
+{
+  "brand": "BZBGear",
+  "product": "BG-ADAMO-4K",
+  "version": "1.0.0",
+  "minVersion": "1.1.1",
+  "description": "Managed device driver for the BZBGear BG-ADAMO-4K.",
+  "category": "Cameras",
+  "productUrl": "",
+  "otherSupportedProducts": []
+}

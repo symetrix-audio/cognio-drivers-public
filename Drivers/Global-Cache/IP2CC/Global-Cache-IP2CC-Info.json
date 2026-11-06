@@ -1,0 +1,10 @@
+{
+  "brand": "Global Cache",
+  "product": "IP2CC",
+  "version": "1.0.0",
+  "minVersion": "1.1.1",
+  "description": "Managed device driver for the Global Cache IP2CC.",
+  "category": "I/O",
+  "productUrl": "",
+  "otherSupportedProducts": []
+}

@@ -1,0 +1,10 @@
+{
+  "brand": "Inogeni",
+  "product": "CAM Series",
+  "version": "1.0.0",
+  "minVersion": "1.1.1",
+  "description": "Managed device driver for Inogeni CAM Series HDMI/USB camera selectors, routing between USB 1, USB 2, HDMI, and test pattern.",
+  "category": "Cameras",
+  "productUrl": "",
+  "otherSupportedProducts": []
+}
