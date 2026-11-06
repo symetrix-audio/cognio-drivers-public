@@ -6,9 +6,10 @@ Public repository for completed Cognio device drivers.
 
 `index.html` is a self-contained, dependency-free page that lists every
 released driver and lets you filter by manufacturer, category, and validation
-level. It reads `index.json` (regenerated automatically by the release pipeline
-in the private `cognio-drivers` repo) and links to each driver's `.cogdriver`
-download.
+level. A short key under the Validation filter explains each level
+(Spec-built, Hardware-verified, Field-validated). It reads `index.json`
+(regenerated automatically by the release pipeline in the private
+`cognio-drivers` repo) and links to each driver's `.cogdriver` download.
 
 Once GitHub Pages is enabled (Settings → Pages → Deploy from a branch →
 `main` / root), the library is published at:
