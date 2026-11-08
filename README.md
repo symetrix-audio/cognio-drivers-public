@@ -32,6 +32,10 @@ Once GitHub Pages is enabled (Settings → Pages → Deploy from a branch →
   also carry `productUrl`, a link to the manufacturer's product page for the
   3rd-party device, present only when the driver author filled it in; the card
   renders it as a "Manufacturer product page" link.
+  Each entry also carries `releaseNotes` — the driver's version history,
+  newest first, as `[{ "version": "1.0.1", "date": "2026-12-01", "notes": ["…"] }, …]`.
+  The card shows it as a collapsible **Release notes** section with each
+  version's publish date (the newest entry is tagged *Latest*); an entry without it renders no section.
 - **Linking to a driver.** Every card has an anchor named after the driver's
   file slug, lowercased — e.g.
   `https://drivers.symetrix.co/#shure-ulxd4q` for

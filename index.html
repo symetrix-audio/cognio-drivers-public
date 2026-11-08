@@ -178,6 +178,21 @@
   .card .product-link a { text-decoration: none; font-weight: 600; }
   .card .product-link a:hover { text-decoration: underline; }
   .card .product-link .ext { font-size: 11px; opacity: .7; }
+  /* ---- Release notes (collapsible, newest first) ---- */
+  .notes { grid-column: 1; margin: 10px 0 0; font-size: 13px; }
+  .notes summary {
+    cursor: pointer; color: var(--accent); font-weight: 600;
+    list-style-position: inside; width: max-content;
+  }
+  .notes summary:hover { text-decoration: underline; }
+  .notes .rel { margin: 8px 0 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+  .notes .rel-ver { font-weight: 600; color: var(--ink); }
+  .notes .rel-date { margin-left: 8px; font-weight: 400; color: var(--muted); }
+  .notes .latest {
+    margin-left: 6px; font-size: 11px; font-weight: 500; padding: 1px 7px;
+    border-radius: 999px; background: #e2f3e8; color: #1c6b3a;
+  }
+  .notes ul { margin: 2px 0 0; padding-left: 18px; color: #33475b; }
   .badges { grid-column: 1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
   .badge {
     font-size: 12px; padding: 2px 9px; border-radius: 999px;
@@ -280,6 +295,16 @@
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
+  }
+
+  // "2026-11-06" -> "Nov 6, 2026". Parsed as UTC and formatted as UTC so the
+  // day never shifts with the visitor's time zone; falls back to the raw string.
+  function fmtDate(s) {
+    var d = new Date(String(s) + "T00:00:00Z");
+    if (isNaN(d.getTime())) return String(s);
+    try {
+      return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
+    } catch (e) { return String(s); }
   }
 
   // Stable anchor id for a driver card: the bundle's file slug, lowercased
@@ -436,6 +461,23 @@
         '<span class="ext" aria-hidden="true">↗</span></a></div>'
       : "";
 
+    // Release notes (optional): the driver's version history, newest first, as
+    // emitted by the release pipeline from the Info.json "releaseNotes" field.
+    // Collapsed by default so cards stay compact; absent/empty -> nothing.
+    var notes = (Array.isArray(d.releaseNotes) && d.releaseNotes.length)
+      ? '<details class="notes"><summary>Release notes</summary>' +
+        d.releaseNotes.map(function (r, i) {
+          var items = Array.isArray(r && r.notes) ? r.notes : [];
+          return '<div class="rel"><div class="rel-ver">v' + esc(r && r.version) +
+            (r && r.date ? '<time class="rel-date" datetime="' + esc(r.date) + '">' +
+              esc(fmtDate(r.date)) + '</time>' : "") +
+            (i === 0 ? '<span class="latest">Latest</span>' : "") + '</div>' +
+            '<ul>' + items.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join("") +
+            '</ul></div>';
+        }).join("") +
+        '</details>'
+      : "";
+
     var dl = d.downloadUrl
       ? '<a class="dl" href="' + esc(d.downloadUrl) + '" download="' + esc(fileName) +
         '" rel="noopener">Download</a>'
@@ -477,6 +519,7 @@
       others +
       productLink +
       shot +
+      notes +
       dl +
     '</article>';
   }
