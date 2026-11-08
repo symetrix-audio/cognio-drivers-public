@@ -200,6 +200,7 @@
   .badge.tested-hardware { background: #e2f3e8; color: #1c6b3a; }
   .badge.tested-3rd { background: #fdefdc; color: #8a5a12; }
   .badge.tested-untested { background: #eef1f4; color: #61707e; }
+  .badge.author { background: #fff; color: #33475b; box-shadow: inset 0 0 0 1px var(--line); }
 
   .dl {
     grid-column: 2; grid-row: 1 / span 2; align-self: center;
@@ -265,8 +266,26 @@
   var FACETS = [
     { id: "brand",    key: "brand",    label: "Manufacturer" },
     { id: "category", key: "category", label: "Category" },
-    { id: "tested",   key: "tested",   label: "Validation" }
+    { id: "tested",   key: "tested",   label: "Validation" },
+    // Every driver is Symetrix-written today, and a one-option filter is just
+    // noise, so Author only appears once a second kind of author is published.
+    { id: "author",   key: "author",   label: "Author", minOptions: 2 }
   ];
+
+  // Public labels for the `author` values (who wrote the driver).
+  var AUTHOR_LABEL = {
+    "symetrix": "Symetrix",
+    "manufacturer": "Manufacturer",
+    "community": "Community"
+  };
+
+  // Card badge text. A manufacturer-written driver names the brand itself.
+  function authorBadge(d) {
+    if (d.author === "symetrix") return "By Symetrix";
+    if (d.author === "manufacturer") return d.brand ? "By " + d.brand : "By the manufacturer";
+    if (d.author === "community") return "Community-built";
+    return "";
+  }
 
   // Public labels for the `tested` values. The stored values (untested /
   // hardware / 3rd party) are the private repo's manifest vocabulary and stay
@@ -289,7 +308,7 @@
   var state = {
     all: [],                                   // every driver from index.json
     search: "",
-    selected: { brand: new Set(), category: new Set(), tested: new Set() }
+    selected: { brand: new Set(), category: new Set(), tested: new Set(), author: new Set() }
   };
 
   var elFilters = document.getElementById("filters");
@@ -356,7 +375,7 @@
     elFilters.innerHTML = "";
     FACETS.forEach(function (facet) {
       var opts = optionsFor(facet.key);
-      if (!opts.length) return; // hide a facet with no data yet
+      if (opts.length < (facet.minOptions || 1)) return; // hide a facet with too little data
       var group = document.createElement("div");
       group.className = "filter-group";
       var h = document.createElement("h2");
@@ -369,7 +388,9 @@
       // "All" pseudo-option: checked when nothing specific is selected.
       list.appendChild(makeRow(facet, null, "All", state.all.length));
       opts.forEach(function (o) {
-        var display = facet.key === "tested" ? (TESTED_LABEL[o.value] || o.value) : o.value;
+        var display = facet.key === "tested" ? (TESTED_LABEL[o.value] || o.value)
+          : facet.key === "author" ? (AUTHOR_LABEL[o.value] || o.value)
+          : o.value;
         list.appendChild(makeRow(facet, o.value, display, o.count));
       });
       group.appendChild(list);
@@ -516,6 +537,7 @@
         (d.version ? '<span class="badge ver">v' + esc(d.version) + '</span>' : "") +
         (d.minVersion ? '<span class="badge min" title="Minimum Cognio Design Ops version required">Cognio ' + esc(d.minVersion) + '+</span>' : "") +
         '<span class="badge ' + testedClass + '">' + esc(testedText) + '</span>' +
+        (authorBadge(d) ? '<span class="badge author">' + esc(authorBadge(d)) + '</span>' : "") +
       '</div>' +
       (d.description ? '<p class="desc">' + esc(d.description) + '</p>' : "") +
       others +
