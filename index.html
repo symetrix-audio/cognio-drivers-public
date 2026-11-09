@@ -143,6 +143,17 @@
   .filter-list label:hover { background: var(--chip); }
   .filter-list input { accent-color: var(--accent); width: 15px; height: 15px; }
   .filter-list .count { margin-left: auto; color: var(--muted); font-size: 12px; }
+  /* Optional explainer under a facet's options (e.g. what each Validation
+     level means). */
+  .filter-note {
+    border-top: 1px solid var(--line);
+    padding: 10px 14px 12px;
+    font-size: 12px; line-height: 1.45; color: var(--muted);
+  }
+  .filter-note dl { margin: 0; }
+  .filter-note dt { font-weight: 600; color: var(--ink); }
+  .filter-note dd { margin: 0 0 6px; }
+  .filter-note dd:last-child { margin-bottom: 0; }
   .clear-all {
     background: none; border: none; color: var(--accent);
     font-size: 13px; cursor: pointer; padding: 4px 2px; margin-bottom: 12px;
@@ -168,6 +179,29 @@
     gap: 6px 18px;
   }
   .card .title { grid-column: 1; margin: 0; font-size: 18px; }
+  /* Deep links (#<driver-slug>): leave breathing room above the card when the
+     page scrolls to it, and flash a highlight so the visitor sees which one. */
+  .card { scroll-margin-top: 16px; }
+  .card.linked { animation: linked-flash 2.4s ease-out; }
+  @keyframes linked-flash {
+    0%, 35% { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(10, 102, 194, .28), var(--shadow); }
+    100%    { border-color: var(--line);   box-shadow: var(--shadow); }
+  }
+  .permalink {
+    margin-left: 8px; font-size: 12px; font-weight: 500;
+    color: var(--muted); text-decoration: none; white-space: nowrap;
+    vertical-align: middle;
+  }
+  .permalink:hover, .permalink:focus-visible { color: var(--accent); text-decoration: underline; }
+  .permalink.copied { color: #1c6b3a; }
+  /* Keep cards uncluttered: "Copy link" fades in only while the card is
+     hovered (or the link has keyboard focus / just copied). opacity rather
+     than display so the title never shifts. Touch screens can't hover, so
+     the link stays visible there. */
+  @media (hover: hover) {
+    .permalink { opacity: 0; transition: opacity .15s; }
+    .card:hover .permalink, .permalink:focus-visible, .permalink.copied { opacity: 1; }
+  }
   .brand-row {
     grid-column: 1;
     display: flex; align-items: center; gap: 8px;
@@ -205,6 +239,21 @@
   .card .product-link a { text-decoration: none; font-weight: 600; }
   .card .product-link a:hover { text-decoration: underline; }
   .card .product-link .ext { font-size: 11px; opacity: .7; }
+  /* ---- Release notes (collapsible, newest first) ---- */
+  .notes { grid-column: 1; margin: 10px 0 0; font-size: 13px; }
+  .notes summary {
+    cursor: pointer; color: var(--accent); font-weight: 600;
+    list-style-position: inside; width: max-content;
+  }
+  .notes summary:hover { text-decoration: underline; }
+  .notes .rel { margin: 8px 0 0 2px; padding-left: 10px; border-left: 2px solid var(--line); }
+  .notes .rel-ver { font-weight: 600; color: var(--ink); }
+  .notes .rel-date { margin-left: 8px; font-weight: 400; color: var(--muted); }
+  .notes .latest {
+    margin-left: 6px; font-size: 11px; font-weight: 500; padding: 1px 7px;
+    border-radius: 999px; background: #e2f3e8; color: #1c6b3a;
+  }
+  .notes ul { margin: 2px 0 0; padding-left: 18px; color: #33475b; }
   .badges { grid-column: 1; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
   .badge {
     font-size: 12px; padding: 2px 9px; border-radius: 999px;
@@ -216,6 +265,7 @@
   .badge.tested-hardware { background: #e2f3e8; color: #1c6b3a; }
   .badge.tested-3rd { background: #fdefdc; color: #8a5a12; }
   .badge.tested-untested { background: #eef1f4; color: #61707e; }
+  .badge.author { background: #fff; color: #33475b; box-shadow: inset 0 0 0 1px var(--line); }
 
   .dl {
     grid-column: 2; grid-row: 1 / span 2; align-self: center;
@@ -323,20 +373,49 @@
   var FACETS = [
     { id: "brand",    key: "brand",    label: "Manufacturer" },
     { id: "category", key: "category", label: "Category" },
-    { id: "tested",   key: "tested",   label: "Validation" }
+    { id: "tested",   key: "tested",   label: "Validation" },
+    // Every driver is Symetrix-written today, and a one-option filter is just
+    // noise, so Author only appears once a second kind of author is published.
+    { id: "author",   key: "author",   label: "Author", minOptions: 2 }
   ];
 
-  // Friendly labels for the `tested` values.
-  var TESTED_LABEL = {
-    "untested": "Untested",
-    "hardware": "Hardware tested",
-    "3rd party": "3rd-party validated"
+  // Public labels for the `author` values (who wrote the driver).
+  var AUTHOR_LABEL = {
+    "symetrix": "Symetrix",
+    "manufacturer": "Manufacturer",
+    "community": "Community"
   };
+
+  // Card badge text. A manufacturer-written driver names the brand itself.
+  function authorBadge(d) {
+    if (d.author === "symetrix") return "By Symetrix";
+    if (d.author === "manufacturer") return d.brand ? "By " + d.brand : "By the manufacturer";
+    if (d.author === "community") return "Community-built";
+    return "";
+  }
+
+  // Public labels for the `tested` values. The stored values (untested /
+  // hardware / 3rd party) are the private repo's manifest vocabulary and stay
+  // as-is; only what visitors see is renamed, as a maturity ladder.
+  var TESTED_LABEL = {
+    "untested": "Spec-built",
+    "hardware": "Hardware-verified",
+    "3rd party": "Field-validated"
+  };
+
+  // What each `tested` level means, shown under the Validation filter. Mirrors
+  // the definitions in the private cognio-drivers README; listed from least to
+  // most validated, and always all three so the scale reads as a whole.
+  var TESTED_HELP = [
+    ["untested",  "Built from the manufacturer’s published control protocol. Not yet tested on a real device."],
+    ["hardware",  "Tested by the driver author against the real device."],
+    ["3rd party", "Confirmed in a live installation by a customer or the manufacturer."]
+  ];
 
   var state = {
     all: [],                                   // every driver from index.json
     search: "",
-    selected: { brand: new Set(), category: new Set(), tested: new Set() }
+    selected: { brand: new Set(), category: new Set(), tested: new Set(), author: new Set() }
   };
 
   var elFilters = document.getElementById("filters");
@@ -351,6 +430,26 @@
     });
   }
 
+  // "2026-11-06" -> "Nov 6, 2026". Parsed as UTC and formatted as UTC so the
+  // day never shifts with the visitor's time zone; falls back to the raw string.
+  function fmtDate(s) {
+    var d = new Date(String(s) + "T00:00:00Z");
+    if (isNaN(d.getTime())) return String(s);
+    try {
+      return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
+    } catch (e) { return String(s); }
+  }
+
+  // Stable anchor id for a driver card: the bundle's file slug, lowercased
+  // (Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver -> "shure-ulxd4q"). The slug is
+  // unique per driver and doesn't change between versions, so a link support
+  // sends today still lands on the right card after the driver is updated.
+  function driverId(d) {
+    var file = String(d.path || "").split("/").pop().replace(/\.cogdriver$/i, "");
+    var base = file || ((d.brand || "") + "-" + (d.product || ""));
+    return base.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+
   // ---- data load ----
   fetch("./index.json", { cache: "no-cache" })
     .then(function (r) {
@@ -361,6 +460,7 @@
       state.all = Array.isArray(data && data.drivers) ? data.drivers : [];
       buildFilters();
       render();
+      goToHash();
     })
     .catch(function () {
       // A missing index.json (before the first release) is an expected state,
@@ -378,8 +478,13 @@
       if (v == null || v === "") return;
       counts[v] = (counts[v] || 0) + 1;
     });
+    // Validation reads as a ladder (least to most validated), so keep it in
+    // TESTED_HELP order; every other facet is alphabetical.
+    var rank = key === "tested"
+      ? function (v) { var i = TESTED_HELP.map(function (r) { return r[0]; }).indexOf(v); return i < 0 ? 99 : i; }
+      : null;
     return Object.keys(counts).sort(function (a, b) {
-      return a.localeCompare(b);
+      return rank ? (rank(a) - rank(b)) || a.localeCompare(b) : a.localeCompare(b);
     }).map(function (v) { return { value: v, count: counts[v] }; });
   }
 
@@ -387,7 +492,7 @@
     elFilters.innerHTML = "";
     FACETS.forEach(function (facet) {
       var opts = optionsFor(facet.key);
-      if (!opts.length) return; // hide a facet with no data yet
+      if (opts.length < (facet.minOptions || 1)) return; // hide a facet with too little data
       var group = document.createElement("div");
       group.className = "filter-group";
       var h = document.createElement("h2");
@@ -400,12 +505,31 @@
       // "All" pseudo-option: checked when nothing specific is selected.
       list.appendChild(makeRow(facet, null, "All", state.all.length));
       opts.forEach(function (o) {
-        var display = facet.key === "tested" ? (TESTED_LABEL[o.value] || o.value) : o.value;
+        var display = facet.key === "tested" ? (TESTED_LABEL[o.value] || o.value)
+          : facet.key === "author" ? (AUTHOR_LABEL[o.value] || o.value)
+          : o.value;
         list.appendChild(makeRow(facet, o.value, display, o.count));
       });
       group.appendChild(list);
+      if (facet.key === "tested") group.appendChild(testedNote());
       elFilters.appendChild(group);
     });
+  }
+
+  function testedNote() {
+    var note = document.createElement("div");
+    note.className = "filter-note";
+    var dl = document.createElement("dl");
+    TESTED_HELP.forEach(function (row) {
+      var dt = document.createElement("dt");
+      dt.textContent = TESTED_LABEL[row[0]];
+      var dd = document.createElement("dd");
+      dd.textContent = row[1];
+      dl.appendChild(dt);
+      dl.appendChild(dd);
+    });
+    note.appendChild(dl);
+    return note;
   }
 
   function makeRow(facet, value, display, count) {
@@ -479,7 +603,7 @@
     var fileName = String(d.path || d.downloadUrl || "").split("/").pop() || "driver.cogdriver";
     var testedClass = d.tested === "hardware" ? "tested-hardware"
       : d.tested === "3rd party" ? "tested-3rd" : "tested-untested";
-    var testedText = TESTED_LABEL[d.tested] || d.tested || "Untested";
+    var testedText = TESTED_LABEL[d.tested] || d.tested || TESTED_LABEL.untested;
 
     var others = (Array.isArray(d.otherSupportedProducts) && d.otherSupportedProducts.length)
       ? '<div class="others">Also supports: ' + esc(d.otherSupportedProducts.join(", ")) + '</div>'
@@ -492,6 +616,23 @@
       ? '<div class="product-link"><a href="' + esc(d.productUrl) +
         '" target="_blank" rel="noopener">Manufacturer product page ' +
         '<span class="ext" aria-hidden="true">↗</span></a></div>'
+      : "";
+
+    // Release notes (optional): the driver's version history, newest first, as
+    // emitted by the release pipeline from the Info.json "releaseNotes" field.
+    // Collapsed by default so cards stay compact; absent/empty -> nothing.
+    var notes = (Array.isArray(d.releaseNotes) && d.releaseNotes.length)
+      ? '<details class="notes"><summary>Release notes</summary>' +
+        d.releaseNotes.map(function (r, i) {
+          var items = Array.isArray(r && r.notes) ? r.notes : [];
+          return '<div class="rel"><div class="rel-ver">v' + esc(r && r.version) +
+            (r && r.date ? '<time class="rel-date" datetime="' + esc(r.date) + '">' +
+              esc(fmtDate(r.date)) + '</time>' : "") +
+            (i === 0 ? '<span class="latest">Latest</span>' : "") + '</div>' +
+            '<ul>' + items.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join("") +
+            '</ul></div>';
+        }).join("") +
+        '</details>'
       : "";
 
     // data-* attributes feed the GA4 file_download event (see the click
@@ -520,8 +661,11 @@
         'onerror="this.closest(\'.shot\').remove()"></div>'
       : "";
 
-    return '<article class="card">' +
-      '<h3 class="title">' + esc(d.product || "Unnamed driver") + '</h3>' +
+    var id = driverId(d);
+    return '<article class="card" id="' + esc(id) + '">' +
+      '<h3 class="title">' + esc(d.product || "Unnamed driver") +
+        '<a class="permalink" href="#' + esc(id) + '" title="Copy a link to this driver">Copy link</a>' +
+      '</h3>' +
       '<div class="brand-row">' + logo +
         '<span class="brand">' + esc(d.brand || "") + '</span>' +
       '</div>' +
@@ -530,11 +674,13 @@
         (d.version ? '<span class="badge ver">v' + esc(d.version) + '</span>' : "") +
         (d.minVersion ? '<span class="badge min" title="Minimum Cognio Design Ops version required">Cognio ' + esc(d.minVersion) + '+</span>' : "") +
         '<span class="badge ' + testedClass + '">' + esc(testedText) + '</span>' +
+        (authorBadge(d) ? '<span class="badge author">' + esc(authorBadge(d)) + '</span>' : "") +
       '</div>' +
       (d.description ? '<p class="desc">' + esc(d.description) + '</p>' : "") +
       others +
       productLink +
       shot +
+      notes +
       dl +
     '</article>';
   }
@@ -632,17 +778,105 @@
     if (e.key === "Escape") closeLightbox();
   });
 
-  elSearch.addEventListener("input", function () {
-    state.search = elSearch.value.trim().toLowerCase();
-    render();
-  });
-
-  elClear.addEventListener("click", function () {
+  // ---- deep links ----
+  // The page renders after index.json loads, so the browser's own jump-to-#id
+  // has nothing to land on; do it ourselves once the cards exist, and again
+  // whenever the hash changes (e.g. a link pasted into an already-open tab).
+  function resetFilters() {
     state.search = "";
     elSearch.value = "";
     FACETS.forEach(function (f) { state.selected[f.id].clear(); });
     buildFilters();
     render();
+  }
+
+  function goToHash() {
+    var id;
+    try { id = decodeURIComponent(location.hash.slice(1)).toLowerCase(); }
+    catch (e) { return; }
+    if (!id) return;
+    var exists = state.all.some(function (d) { return driverId(d) === id; });
+    if (!exists) return;                       // unknown/retired driver: just show the list
+    var card = document.getElementById(id);
+    if (!card) {                               // hidden by the current filters
+      resetFilters();
+      card = document.getElementById(id);
+    }
+    if (!card) return;
+    card.scrollIntoView({ block: "start" });
+    flash(card);
+    keepInView(card);
+  }
+
+  function flash(card) {
+    card.classList.remove("linked");
+    void card.offsetWidth;                     // restart the animation
+    card.classList.add("linked");
+  }
+
+  // Screenshots above the target load lazily and can push it down after we
+  // scroll. For a couple of seconds, re-align when one finishes loading —
+  // unless the visitor has started scrolling on their own.
+  function keepInView(card) {
+    var done = false;
+    function stop() {
+      if (done) return;
+      done = true;
+      elResults.removeEventListener("load", onLoad, true);
+      ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (t) {
+        window.removeEventListener(t, stop, true);
+      });
+    }
+    function onLoad(e) {
+      if (e.target.tagName === "IMG" && card.isConnected &&
+          (e.target.compareDocumentPosition(card) & Node.DOCUMENT_POSITION_FOLLOWING)) {
+        card.scrollIntoView({ block: "start" });
+      }
+    }
+    elResults.addEventListener("load", onLoad, true);
+    ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (t) {
+      window.addEventListener(t, stop, true);
+    });
+    setTimeout(stop, 2500);
+  }
+
+  window.addEventListener("hashchange", goToHash);
+
+  // "Copy link" on a card: put the card's full URL on the clipboard and in the
+  // address bar, without jumping the page. If the clipboard is unavailable the
+  // address bar still shows the link, so it can be copied by hand.
+  elResults.addEventListener("click", function (e) {
+    var a = e.target.closest(".permalink");
+    if (!a) return;
+    e.preventDefault();
+    var id = a.getAttribute("href").slice(1);
+    var url = location.href.split("#")[0] + "#" + id;
+    history.replaceState(null, "", "#" + id);
+    var card = document.getElementById(id);
+    if (card) flash(card);
+    function done(text) {
+      a.textContent = text;
+      a.classList.add("copied");
+      setTimeout(function () {
+        a.textContent = "Copy link";
+        a.classList.remove("copied");
+      }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(
+        function () { done("Link copied"); },
+        function () { done("Link in address bar"); }
+      );
+    } else {
+      done("Link in address bar");
+    }
   });
+
+  elSearch.addEventListener("input", function () {
+    state.search = elSearch.value.trim().toLowerCase();
+    render();
+  });
+
+  elClear.addEventListener("click", resetFilters);
 })();
 </script>

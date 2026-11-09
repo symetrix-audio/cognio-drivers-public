@@ -1,10 +1,20 @@
 {
   "brand": "Bitfocus",
   "product": "Companion",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "minVersion": "1.0.1",
   "description": "Managed device driver for the Bitfocus Companion.",
   "category": "Control",
+  "author": "symetrix",
   "productUrl": "",
-  "otherSupportedProducts": []
+  "otherSupportedProducts": [],
+  "releaseNotes": [
+    {
+      "version": "1.0.0",
+      "date": "2026-09-14",
+      "notes": [
+        "Initial release."
+      ]
+    }
+  ]
 }
