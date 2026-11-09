@@ -5,6 +5,7 @@
   "minVersion": "1.0.1",
   "description": "Managed device driver for the NETIO PDU.",
   "category": "Power",
+  "author": "symetrix",
   "productUrl": "",
   "otherSupportedProducts": [
     "PowerPDU 4C",
@@ -15,5 +16,14 @@
     "PowerBOX 4KX",
     "PowerBOX 4KF",
     "PowerDIN 4PZ"
+  ],
+  "releaseNotes": [
+    {
+      "version": "1.0.0",
+      "date": "2026-09-14",
+      "notes": [
+        "Initial release."
+      ]
+    }
   ]
 }

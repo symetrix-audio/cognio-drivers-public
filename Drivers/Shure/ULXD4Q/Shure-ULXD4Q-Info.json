@@ -1,10 +1,29 @@
 {
   "brand": "Shure",
   "product": "ULXD4Q",
-  "version": "1.0.0",
-  "minVersion": "1.0.1",
+  "version": "1.0.1",
+  "minVersion": "1.1.1",
   "description": "Managed device driver for the Shure ULXD4Q 4-channel UHF wireless receiver.",
   "category": "Microphone",
+  "author": "symetrix",
   "productUrl": "https://www.shure.com/en-US/products/wireless-systems/ulx-d_digital_wireless/ulxd4q",
-  "otherSupportedProducts": []
+  "otherSupportedProducts": [],
+  "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-09",
+      "notes": [
+        "More compact control panel (620 x 850, down from 670 x 1300).",
+        "Removed the decorative icons; the IP field is now labelled \"Set Control IP\".",
+        "No change to the driver script or controls."
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-09-14",
+      "notes": [
+        "Initial release."
+      ]
+    }
+  ]
 }

@@ -1,10 +1,29 @@
 {
   "brand": "Audio-Technica",
   "product": "ATND1061",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.1.1",
   "description": "Managed device driver for the Audio-Technica ATND1061.",
   "category": "Microphone",
+  "author": "symetrix",
   "productUrl": "https://www.audio-technica.com/en-us/atnd1061",
-  "otherSupportedProducts": []
+  "otherSupportedProducts": [],
+  "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-09",
+      "notes": [
+        "Fixed the driver stopping after about a minute and a half when it could not join the notification multicast group (seen when connecting offline from Site Manager on a PC).",
+        "The multicast group is now joined on a local address on the mic's subnet, falling back to the PC's default network interface, instead of always on the audio address, which offline in Site Manager may not be one the PC can join on.",
+        "A preset recalled from the panel now updates the controls immediately, even when multicast notifications are unavailable."
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-11-05",
+      "notes": [
+        "Initial release."
+      ]
+    }
+  ]
 }

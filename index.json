@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-06T16:40:28.417Z",
-  "sourceCommit": "f4525cd7c216962d5449e86587b39c290ccefcc0",
+  "generatedAt": "2026-11-09T21:39:47.423Z",
+  "sourceCommit": "abad3674ba6f31f805da838a80d6ff2f9ad2d783",
   "count": 23,
   "drivers": [
     {
@@ -11,7 +11,17 @@
       "description": "Managed device driver for the AREC Media Station.",
       "category": "Streaming",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-05",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/AREC/Media Station/AREC-Media-Station.cogdriver",
       "infoPath": "Drivers/AREC/Media Station/AREC-Media-Station-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/AREC/Media Station/AREC-Media-Station.cogdriver",
@@ -28,7 +38,17 @@
       "description": "Managed device driver for Audinate Dante Domain Manager (DDM), controlled via its GraphQL Managed API.",
       "category": "Control",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Audinate/DDM/Audinate-DDM.cogdriver",
       "infoPath": "Drivers/Audinate/DDM/Audinate-DDM-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Audinate/DDM/Audinate-DDM.cogdriver",
@@ -40,12 +60,31 @@
     {
       "brand": "Audio-Technica",
       "product": "ATND1061",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the Audio-Technica ATND1061.",
       "category": "Microphone",
       "tested": "hardware",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-09",
+          "notes": [
+            "Fixed the driver stopping after about a minute and a half when it could not join the notification multicast group (seen when connecting offline from Site Manager on a PC).",
+            "The multicast group is now joined on a local address on the mic's subnet, falling back to the PC's default network interface, instead of always on the audio address, which offline in Site Manager may not be one the PC can join on.",
+            "A preset recalled from the panel now updates the controls immediately, even when multicast notifications are unavailable."
+          ]
+        },
+        {
+          "version": "1.0.0",
+          "date": "2026-11-05",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Audio-Technica/ATND1061/Audio-Technica-ATND1061.cogdriver",
       "infoPath": "Drivers/Audio-Technica/ATND1061/Audio-Technica-ATND1061-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Audio-Technica/ATND1061/Audio-Technica-ATND1061.cogdriver",
@@ -63,7 +102,17 @@
       "description": "Managed device driver for the BirdDog BD4KHDMI.",
       "category": "Video",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-05",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/BirdDog/BD4KHDMI/BirdDog-BD4KHDMI.cogdriver",
       "infoPath": "Drivers/BirdDog/BD4KHDMI/BirdDog-BD4KHDMI-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/BirdDog/BD4KHDMI/BirdDog-BD4KHDMI.cogdriver",
@@ -80,7 +129,17 @@
       "description": "Managed device driver for the Bitfocus Companion.",
       "category": "Control",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-09-14",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Bitfocus/Companion/Bitfocus-Companion.cogdriver",
       "infoPath": "Drivers/Bitfocus/Companion/Bitfocus-Companion-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Bitfocus/Companion/Bitfocus-Companion.cogdriver",
@@ -97,7 +156,17 @@
       "description": "Managed device driver for the Bolin PTZ Camera.",
       "category": "Cameras",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Bolin/PTZ Camera/Bolin-PTZ-Camera.cogdriver",
       "infoPath": "Drivers/Bolin/PTZ Camera/Bolin-PTZ-Camera-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Bolin/PTZ Camera/Bolin-PTZ-Camera.cogdriver",
@@ -114,7 +183,17 @@
       "description": "Managed device driver for the BZBGear BG-4K-VP44.",
       "category": "Video",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/BZBGear/BG-4K-VP44/BZBGear-BG-4K-VP44.cogdriver",
       "infoPath": "Drivers/BZBGear/BG-4K-VP44/BZBGear-BG-4K-VP44-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/BZBGear/BG-4K-VP44/BZBGear-BG-4K-VP44.cogdriver",
@@ -131,7 +210,17 @@
       "description": "Managed device driver for the BZBGear BG-ADAMO-4K.",
       "category": "Cameras",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/BZBGear/BG-ADAMO-4K/BZBGear-BG-ADAMO-4K.cogdriver",
       "infoPath": "Drivers/BZBGear/BG-ADAMO-4K/BZBGear-BG-ADAMO-4K-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/BZBGear/BG-ADAMO-4K/BZBGear-BG-ADAMO-4K.cogdriver",
@@ -148,7 +237,17 @@
       "description": "Managed device driver for Datavideo PTZ cameras using the VISCA command set over serial or VISCA-over-IP (DVIP).",
       "category": "Cameras",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-09-14",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Datavideo/PTZ Camera/Datavideo-PTZ-Camera.cogdriver",
       "infoPath": "Drivers/Datavideo/PTZ Camera/Datavideo-PTZ-Camera-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/PTZ Camera/Datavideo-PTZ-Camera.cogdriver",
@@ -165,7 +264,17 @@
       "description": "Managed device driver for Datavideo PTZ cameras with auto-tracking, using the VISCA command set over serial or VISCA-over-IP (DVIP).",
       "category": "Cameras",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-09-14",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking.cogdriver",
       "infoPath": "Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Datavideo/PTZ Camera Auto Tracking/Datavideo-PTZ-Camera-Auto-Tracking.cogdriver",
@@ -182,7 +291,17 @@
       "description": "Managed device driver for Projectors that support Epson PJ Link protocol.",
       "category": "Video",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Epson/Projector/Epson.cogdriver",
       "infoPath": "Drivers/Epson/Projector/Epson-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Epson/Projector/Epson.cogdriver",
@@ -199,7 +318,17 @@
       "description": "Managed device driver for the Genelec Smart IP Speaker.",
       "category": "Speakers",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Genelec/Smart IP Speaker/Genelec-Smart-IP-Speaker.cogdriver",
       "infoPath": "Drivers/Genelec/Smart IP Speaker/Genelec-Smart-IP-Speaker-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Genelec/Smart IP Speaker/Genelec-Smart-IP-Speaker.cogdriver",
@@ -216,7 +345,17 @@
       "description": "Managed device driver for the Global Cache IP2CC.",
       "category": "I/O",
       "tested": "hardware",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Global-Cache/IP2CC/Global-Cache-IP2CC.cogdriver",
       "infoPath": "Drivers/Global-Cache/IP2CC/Global-Cache-IP2CC-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Global-Cache/IP2CC/Global-Cache-IP2CC.cogdriver",
@@ -233,7 +372,17 @@
       "description": "Managed device driver for Inogeni CAM Series HDMI/USB camera selectors, routing between USB 1, USB 2, HDMI, and test pattern.",
       "category": "Cameras",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Inogeni/CAM Series/Inogeni-CAM-Series.cogdriver",
       "infoPath": "Drivers/Inogeni/CAM Series/Inogeni-CAM-Series-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Inogeni/CAM Series/Inogeni-CAM-Series.cogdriver",
@@ -250,7 +399,17 @@
       "description": "Managed device driver for the Lab Gruppen D Series Amplifier.",
       "category": "Amplification",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-09-14",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Lab Gruppen/D Series Amplifier/Lab-Gruppen-D-Series-Amplifier.cogdriver",
       "infoPath": "Drivers/Lab Gruppen/D Series Amplifier/Lab-Gruppen-D-Series-Amplifier-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Lab Gruppen/D Series Amplifier/Lab-Gruppen-D-Series-Amplifier.cogdriver",
@@ -267,6 +426,7 @@
       "description": "Managed device driver for the NETIO PDU.",
       "category": "Power",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [
         "PowerPDU 4C",
         "PowerPDU 4KS",
@@ -276,6 +436,15 @@
         "PowerBOX 4KX",
         "PowerBOX 4KF",
         "PowerDIN 4PZ"
+      ],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-09-14",
+          "notes": [
+            "Initial release."
+          ]
+        }
       ],
       "path": "Drivers/NETIO/PDU/NETIO-PDU.cogdriver",
       "infoPath": "Drivers/NETIO/PDU/NETIO-PDU-Info.json",
@@ -293,7 +462,17 @@
       "description": "Managed device driver for the Netvio 4x4 Video Matrix.",
       "category": "Video",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Netvio/4x4 Video Matrix/Netvio-4x4-Video-Matrix.cogdriver",
       "infoPath": "Drivers/Netvio/4x4 Video Matrix/Netvio-4x4-Video-Matrix-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Netvio/4x4 Video Matrix/Netvio-4x4-Video-Matrix.cogdriver",
@@ -310,7 +489,17 @@
       "description": "Managed device driver for Projectors that support PJ Link protocol.",
       "category": "Video",
       "tested": "hardware",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-09-14",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Other/PJ Link/PJ-Link.cogdriver",
       "infoPath": "Drivers/Other/PJ Link/PJ-Link-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Other/PJ Link/PJ-Link.cogdriver",
@@ -325,7 +514,17 @@
       "description": "Managed device driver for the Powersoft Mezzo amplifier.",
       "category": "Amplification",
       "tested": "hardware",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-05",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Powersoft/Mezzo Amplifier/Powersoft-Mezzo-Amplifier.cogdriver",
       "infoPath": "Drivers/Powersoft/Mezzo Amplifier/Powersoft-Mezzo-Amplifier-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Powersoft/Mezzo Amplifier/Powersoft-Mezzo-Amplifier.cogdriver",
@@ -343,7 +542,17 @@
       "description": "Managed device driver for the Renkus-Heinz Iconyx.",
       "category": "Speakers",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Renkus-Heinz/Iconyx/Renkus-Heinz-Iconyx.cogdriver",
       "infoPath": "Drivers/Renkus-Heinz/Iconyx/Renkus-Heinz-Iconyx-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Renkus-Heinz/Iconyx/Renkus-Heinz-Iconyx.cogdriver",
@@ -360,7 +569,17 @@
       "description": "Managed device driver for the Sennheiser EW-DX.",
       "category": "Microphone",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Sennheiser/EW-DX/Sennheiser-EW-DX.cogdriver",
       "infoPath": "Drivers/Sennheiser/EW-DX/Sennheiser-EW-DX-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Sennheiser/EW-DX/Sennheiser-EW-DX.cogdriver",
@@ -377,7 +596,17 @@
       "description": "Managed device driver for the Sennheiser TCC-M.",
       "category": "Microphone",
       "tested": "untested",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-06",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Sennheiser/TCC-M/Sennheiser-TCC-M.cogdriver",
       "infoPath": "Drivers/Sennheiser/TCC-M/Sennheiser-TCC-M-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Sennheiser/TCC-M/Sennheiser-TCC-M.cogdriver",
@@ -389,12 +618,31 @@
     {
       "brand": "Shure",
       "product": "ULXD4Q",
-      "version": "1.0.0",
-      "minVersion": "1.0.1",
+      "version": "1.0.1",
+      "minVersion": "1.1.1",
       "description": "Managed device driver for the Shure ULXD4Q 4-channel UHF wireless receiver.",
       "category": "Microphone",
       "tested": "hardware",
+      "author": "symetrix",
       "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-09",
+          "notes": [
+            "More compact control panel (620 x 850, down from 670 x 1300).",
+            "Removed the decorative icons; the IP field is now labelled \"Set Control IP\".",
+            "No change to the driver script or controls."
+          ]
+        },
+        {
+          "version": "1.0.0",
+          "date": "2026-09-14",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
       "path": "Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver",
       "infoPath": "Drivers/Shure/ULXD4Q/Shure-ULXD4Q-Info.json",
       "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/ULXD4Q/Shure-ULXD4Q.cogdriver",
