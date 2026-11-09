@@ -555,24 +555,34 @@
     elLightboxImg.src = "";           // release the full-size image
   }
 
+  // Report a Download to GA4. GA4's automatic download tracking doesn't
+  // recognise .cogdriver (and the file lives on raw.githubusercontent.com), so
+  // the event is sent explicitly. Consent Mode decides what GA keeps.
+  // Counts are a lower bound: right-click → "Save link as…" fires no event the
+  // page can see.
+  function trackDownload(e) {
+    var a = e.target.closest("a.dl");
+    if (!a || typeof window.gtag !== "function") return;
+    window.gtag("event", "file_download", {
+      file_name: a.getAttribute("download"),
+      file_extension: "cogdriver",
+      link_url: a.href,
+      driver_brand: a.getAttribute("data-brand"),
+      driver_product: a.getAttribute("data-product"),
+      driver_version: a.getAttribute("data-version")
+    });
+  }
+
   // Delegate: a click on any screenshot thumbnail opens it full size; a click
-  // on a Download button is reported to GA4. GA4's automatic download tracking
-  // doesn't recognise .cogdriver (and the file lives on raw.githubusercontent.com),
-  // so the event is sent explicitly. Consent Mode decides what GA keeps.
+  // on a Download button (left click, Ctrl/Cmd+click, Enter) is tracked.
   elResults.addEventListener("click", function (e) {
     var img = e.target.closest(".shot img");
     if (img) { openLightbox(img.src, img.alt); return; }
-    var a = e.target.closest("a.dl");
-    if (a && typeof window.gtag === "function") {
-      window.gtag("event", "file_download", {
-        file_name: a.getAttribute("download"),
-        file_extension: "cogdriver",
-        link_url: a.href,
-        driver_brand: a.getAttribute("data-brand"),
-        driver_product: a.getAttribute("data-product"),
-        driver_version: a.getAttribute("data-version")
-      });
-    }
+    trackDownload(e);
+  });
+  // Middle-click fires auxclick, not click.
+  elResults.addEventListener("auxclick", function (e) {
+    if (e.button === 1) trackDownload(e);
   });
 
   // ---- analytics consent ----

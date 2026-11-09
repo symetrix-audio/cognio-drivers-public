@@ -31,6 +31,16 @@ Consent Mode v2:
 - Every **Download** click sends a `file_download` event with `driver_brand`,
   `driver_product` and `driver_version`. Register those three as event-scoped
   custom dimensions in GA Admin to report on them.
+- Download counts are a **lower bound**. Left click, Ctrl/Cmd+click, Enter and
+  middle-click are counted. Right-click → "Save link as…" can't be seen by the
+  page, so those downloads are missed. Read the numbers as trends, not exact
+  totals.
+- Downloads also show up as **outbound clicks**, because the files are served
+  from `raw.githubusercontent.com` and GA4's enhanced measurement logs clicks to
+  other domains automatically. When reporting outbound clicks, filter out
+  `link_domain = raw.githubusercontent.com` so each download isn't counted twice.
+  Outbound clicks stay on so that "Manufacturer product page" clicks are still
+  tracked.
 
 The banner and footer link to the Symetrix privacy policy, set by `PRIVACY_URL`
 in `index.html`.
