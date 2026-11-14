@@ -29,6 +29,12 @@ Consent Mode v2:
   www.symetrix.co.
 - The visitor's choice is saved in their browser. **Cookie settings** in the
   footer reopens the banner so they can change it.
+- **Global Privacy Control (GPC)** is honoured. If the browser sends the GPC
+  opt-out signal (`navigator.globalPrivacyControl`), the page treats it as
+  **Decline**: analytics is off, the banner isn't shown, and any existing GA
+  cookies are removed. The signal overrides an earlier Accept for as long as the
+  browser sends it. **Cookie settings** then explains that GPC is on instead of
+  offering a choice.
 - Every **Download** click sends a `file_download` event with `driver_brand`,
   `driver_product` and `driver_version`. Register those three as event-scoped
   custom dimensions in GA Admin to report on them.

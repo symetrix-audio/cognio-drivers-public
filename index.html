@@ -24,6 +24,9 @@
     analytics only.
   - Cookies are host-only (cookie_domain "none"), so this standalone site never
     shares GA cookies or consent state with www.symetrix.co.
+  - Global Privacy Control (navigator.globalPrivacyControl === true) is treated
+    as Decline: analytics is denied, the banner isn't shown, and the signal
+    overrides any earlier Accept for as long as the browser sends it.
   The visitor's choice is stored in localStorage under "cognio-analytics-consent"
   and re-applied here before the tag configures, on every page load.
 -->
@@ -49,7 +52,11 @@
     });
     var saved = null;
     try { saved = localStorage.getItem("cognio-analytics-consent"); } catch (e) { /* storage blocked */ }
-    if (saved === "granted" || saved === "denied") {
+    if (navigator.globalPrivacyControl === true) {
+      // GPC opt-out signal: wins over any saved choice. The saved choice is
+      // left in place, so it applies again if the visitor turns GPC off.
+      gtag("consent", "update", { analytics_storage: "denied" });
+    } else if (saved === "granted" || saved === "denied") {
       gtag("consent", "update", { analytics_storage: saved });
     }
   })();
@@ -302,6 +309,7 @@
   .consent[hidden] { display: none; }
   .consent p { margin: 0; flex: 1; }
   .consent-actions { display: flex; gap: 8px; flex: none; }
+  .consent-actions[hidden] { display: none; }
   .consent-actions button {
     font: inherit; font-weight: 600; font-size: 14px;
     padding: 8px 16px; border-radius: 8px; cursor: pointer;
@@ -347,14 +355,23 @@
 </footer>
 
 <!-- Analytics consent banner. Shown until the visitor makes a choice; reopened
-     from "Cookie settings" in the footer. Accept and Decline carry equal weight. -->
+     from "Cookie settings" in the footer. Accept and Decline carry equal weight.
+     With Global Privacy Control on, the banner is never shown on its own;
+     "Cookie settings" opens it with the GPC message instead of the choice. -->
 <div class="consent" id="consent" role="region" aria-label="Analytics consent" hidden>
-  <p>We use Google Analytics cookies to count visits and driver downloads, so we
+  <p id="consentText">We use Google Analytics cookies to count visits and driver downloads, so we
     know which drivers matter most. No advertising and no cross-site tracking.
     <span class="privacy-link" hidden><a href="#" rel="noopener">Privacy policy</a></span></p>
-  <div class="consent-actions">
+  <div class="consent-actions" id="consentActions">
     <button type="button" class="decline" id="consentDecline">Decline</button>
     <button type="button" class="accept" id="consentAccept">Accept</button>
+  </div>
+  <p id="gpcText" hidden>Your browser's Global Privacy Control signal is on, so
+    analytics is off on this site. To change this, turn off Global Privacy
+    Control in your browser.
+    <span class="privacy-link" hidden><a href="#" rel="noopener">Privacy policy</a></span></p>
+  <div class="consent-actions" id="gpcActions" hidden>
+    <button type="button" class="accept" id="gpcClose">OK</button>
   </div>
 </div>
 
@@ -770,9 +787,18 @@
   document.getElementById("consentAccept").addEventListener("click", function () { setConsent("granted"); });
   document.getElementById("consentDecline").addEventListener("click", function () { setConsent("denied"); });
   document.getElementById("consentSettings").addEventListener("click", function () { elConsent.hidden = false; });
+  document.getElementById("gpcClose").addEventListener("click", function () { elConsent.hidden = true; });
 
-  var choice = savedConsent();
-  if (choice !== "granted" && choice !== "denied") elConsent.hidden = false;
+  if (navigator.globalPrivacyControl === true) {
+    // The browser has already said no (consent was denied in the head script).
+    // Don't ask; "Cookie settings" explains why analytics is off instead.
+    ["consentText", "consentActions"].forEach(function (id) { document.getElementById(id).hidden = true; });
+    ["gpcText", "gpcActions"].forEach(function (id) { document.getElementById(id).hidden = false; });
+    clearGaCookies();
+  } else {
+    var choice = savedConsent();
+    if (choice !== "granted" && choice !== "denied") elConsent.hidden = false;
+  }
   elLightbox.addEventListener("click", closeLightbox);
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") closeLightbox();
