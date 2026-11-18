@@ -1,7 +1,7 @@
 {
   "brand": "Inogeni",
   "product": "CAM Series",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.1.1",
   "description": "Managed device driver for Inogeni CAM Series HDMI/USB camera selectors, routing between USB 1, USB 2, HDMI, and test pattern.",
   "category": "Cameras",
@@ -9,6 +9,15 @@
   "productUrl": "",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: Inogeni header, stock Cognio controls.",
+        "Connect Offline replaces the Connect, Disconnect and Auto Connect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+        "The driver now uses the IP address typed on the panel, Connected lights only after the camera answers, and a camera that stops answering is dropped and retried. The Standby button now sends the camera's allow-standby setting."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-11-06",

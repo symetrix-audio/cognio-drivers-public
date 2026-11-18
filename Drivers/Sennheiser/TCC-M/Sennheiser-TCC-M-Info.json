@@ -1,7 +1,7 @@
 {
   "brand": "Sennheiser",
   "product": "TCC-M",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.1.1",
   "description": "Managed device driver for the Sennheiser TCC-M.",
   "category": "Microphone",
@@ -9,6 +9,15 @@
   "productUrl": "",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: Sennheiser header, stock Cognio controls.",
+        "Connect Offline replaces the Autoconnect button: online the driver always connects; offline it connects only while Connect Offline is on.",
+        "Connected lights only while the microphone answers; a microphone that stops answering is dropped and retried."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-11-06",

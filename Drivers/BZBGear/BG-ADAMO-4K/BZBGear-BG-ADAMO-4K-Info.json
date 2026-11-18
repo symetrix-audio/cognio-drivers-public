@@ -1,7 +1,7 @@
 {
   "brand": "BZBGear",
   "product": "BG-ADAMO-4K",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.1.1",
   "description": "Managed device driver for the BZBGear BG-ADAMO-4K.",
   "category": "Cameras",
@@ -9,6 +9,15 @@
   "productUrl": "",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: BZBGear header, stock Cognio controls.",
+        "New Connect Offline button: online the driver always talks to the camera; offline it does only while Connect Offline is on.",
+        "New Connected light: it lights only while the camera answers, and commands wait until it does."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-11-06",

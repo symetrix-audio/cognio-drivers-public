@@ -1,0 +1,20 @@
+{
+  "brand": "Soundtrack Your Brand",
+  "product": "Sound Zone",
+  "version": "1.0.0",
+  "minVersion": "1.1.1",
+  "description": "Managed integration driver for Soundtrack Your Brand, a cloud music streaming service (not a hardware device). Controls playback on Sound Zones via the Soundtrack API.",
+  "category": "Streaming",
+  "author": "symetrix",
+  "productUrl": "",
+  "otherSupportedProducts": [],
+  "releaseNotes": [
+    {
+      "version": "1.0.0",
+      "date": "2026-11-17",
+      "notes": [
+        "Initial release."
+      ]
+    }
+  ]
+}

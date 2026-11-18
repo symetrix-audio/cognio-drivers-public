@@ -1,7 +1,7 @@
 {
   "brand": "Datavideo",
   "product": "PTZ Camera Auto Tracking",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.0.1",
   "description": "Managed device driver for Datavideo PTZ cameras with auto-tracking, using the VISCA command set over serial or VISCA-over-IP (DVIP).",
   "category": "Cameras",
@@ -9,6 +9,16 @@
   "productUrl": "",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: Datavideo header, stock Cognio controls.",
+        "Connect Offline replaces the Autoconnect, Connect and Disconnect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+        "Connected lights only after the camera answers, and a camera that stops answering is dropped and retried.",
+        "Now has its own driver ID, so it can be imported alongside the Datavideo PTZ Camera driver. In 1.0.0 the two shared an ID, and importing one replaced the other in the Cognio device library. If you imported both, re-import this driver, then re-import Datavideo PTZ Camera if it is missing."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-09-14",

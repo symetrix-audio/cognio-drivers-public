@@ -1,7 +1,7 @@
 {
   "brand": "Renkus-Heinz",
   "product": "Iconyx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.1.1",
   "description": "Managed device driver for the Renkus-Heinz Iconyx.",
   "category": "Speakers",
@@ -9,6 +9,15 @@
   "productUrl": "",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: Renkus-Heinz header, stock Cognio controls.",
+        "Online the driver always connects; offline (designing in Cognio) it only talks to the speaker while Connect Offline is on.",
+        "Connected lights only after the speaker answers; a speaker that misses two replies is dropped and retried. The Aux 2 serial number field no longer shows the master MAC address."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-11-06",

@@ -1,7 +1,7 @@
 {
   "brand": "Powersoft",
   "product": "Mezzo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.1.1",
   "description": "Managed device driver for the Powersoft Mezzo amplifier.",
   "category": "Amplification",
@@ -9,6 +9,15 @@
   "productUrl": "https://www.powersoft.com/en/products/install-amps/mezzo-series",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: Powersoft header, stock Cognio controls; the Connections, Inputs and Outputs tabs are now one page.",
+        "Script Names now follow the standard: Control IP is IPAddress and Flash Unit is Identify. Connect Offline works as before.",
+        "The IP address is checked before connecting."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-11-05",

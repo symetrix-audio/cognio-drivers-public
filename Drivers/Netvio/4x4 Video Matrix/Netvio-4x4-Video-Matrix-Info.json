@@ -1,7 +1,7 @@
 {
   "brand": "Netvio",
   "product": "4x4 Video Matrix",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.1.1",
   "description": "Managed device driver for the Netvio 4x4 Video Matrix.",
   "category": "Video",
@@ -9,6 +9,15 @@
   "productUrl": "",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: Netvio header, stock Cognio controls, routing laid out as aligned grids.",
+        "Connect Offline replaces the Connect, Disconnect and Autoconnect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+        "Connected lights only after the matrix accepts the login, and a matrix that stops answering is dropped and retried."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-11-06",

@@ -1,7 +1,7 @@
 {
   "brand": "Bitfocus",
   "product": "Companion",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.0.1",
   "description": "Managed device driver for the Bitfocus Companion.",
   "category": "Control",
@@ -9,6 +9,15 @@
   "productUrl": "",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard control panel, with numbered buttons.",
+        "Connect Offline follows the standard: online the driver always talks to Companion, offline only while it is on.",
+        "Connected lights only when Companion answers; a Companion that stops answering is dropped and retried."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-09-14",

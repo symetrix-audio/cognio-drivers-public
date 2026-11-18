@@ -1,7 +1,7 @@
 {
   "brand": "BZBGear",
   "product": "BG-4K-VP44",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.1.1",
   "description": "Managed device driver for the BZBGear BG-4K-VP44.",
   "category": "Video",
@@ -9,6 +9,15 @@
   "productUrl": "",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: BZBGear header, stock Cognio controls.",
+        "Connect Offline replaces the Connect, Disconnect and AutoConnect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+        "Connected lights only after the switcher accepts the login, a switcher that stops answering is dropped and retried, and Reboot is sent once and then reconnects."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-11-06",

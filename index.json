@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-09T21:39:47.423Z",
-  "sourceCommit": "abad3674ba6f31f805da838a80d6ff2f9ad2d783",
-  "count": 23,
+  "generatedAt": "2026-11-18T15:47:30.991Z",
+  "sourceCommit": "772401709e3f69b0221f732ecab2ae3378ee0ca0",
+  "count": 25,
   "drivers": [
     {
       "brand": "AREC",
       "product": "Media Station",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the AREC Media Station.",
       "category": "Streaming",
@@ -14,6 +14,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: AREC header, stock Cognio controls.",
+            "Connect Offline replaces the Connect button: online the driver always connects (and reconnects); offline it connects only while Connect Offline is on.",
+            "Connected lights only after the Media Station answers, and a station that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-05",
@@ -33,7 +42,7 @@
     {
       "brand": "Audinate",
       "product": "DDM",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for Audinate Dante Domain Manager (DDM), controlled via its GraphQL Managed API.",
       "category": "Control",
@@ -41,6 +50,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard control panel.",
+            "Added Connect Offline: online the driver always talks to the DDM server, offline only while Connect Offline is on.",
+            "Added a Connected light that shows only while the server answers; a server that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -97,7 +115,7 @@
     {
       "brand": "BirdDog",
       "product": "BD4KHDMI",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the BirdDog BD4KHDMI.",
       "category": "Video",
@@ -105,6 +123,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: BirdDog header with a Connected light, stock Cognio controls.",
+            "Connect Offline replaces the Connect button: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights only while the device answers, a device that stops answering is dropped and retried, and the link is dropped during a reboot."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-05",
@@ -124,7 +151,7 @@
     {
       "brand": "Bitfocus",
       "product": "Companion",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.0.1",
       "description": "Managed device driver for the Bitfocus Companion.",
       "category": "Control",
@@ -132,6 +159,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard control panel, with numbered buttons.",
+            "Connect Offline follows the standard: online the driver always talks to Companion, offline only while it is on.",
+            "Connected lights only when Companion answers; a Companion that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-09-14",
@@ -151,7 +187,7 @@
     {
       "brand": "Bolin",
       "product": "PTZ Camera",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the Bolin PTZ Camera.",
       "category": "Cameras",
@@ -159,6 +195,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Bolin header, stock Cognio controls; the zoom + and - buttons now match what they do.",
+            "Connect Offline replaces the Connect and Disconnect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights only after the camera answers, and a camera that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -178,7 +223,7 @@
     {
       "brand": "BZBGear",
       "product": "BG-4K-VP44",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the BZBGear BG-4K-VP44.",
       "category": "Video",
@@ -186,6 +231,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: BZBGear header, stock Cognio controls.",
+            "Connect Offline replaces the Connect, Disconnect and AutoConnect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights only after the switcher accepts the login, a switcher that stops answering is dropped and retried, and Reboot is sent once and then reconnects."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -205,7 +259,7 @@
     {
       "brand": "BZBGear",
       "product": "BG-ADAMO-4K",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the BZBGear BG-ADAMO-4K.",
       "category": "Cameras",
@@ -213,6 +267,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: BZBGear header, stock Cognio controls.",
+            "New Connect Offline button: online the driver always talks to the camera; offline it does only while Connect Offline is on.",
+            "New Connected light: it lights only while the camera answers, and commands wait until it does."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -232,7 +295,7 @@
     {
       "brand": "Datavideo",
       "product": "PTZ Camera",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.0.1",
       "description": "Managed device driver for Datavideo PTZ cameras using the VISCA command set over serial or VISCA-over-IP (DVIP).",
       "category": "Cameras",
@@ -240,6 +303,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Datavideo header, stock Cognio controls.",
+            "Connect Offline replaces the Autoconnect, Connect and Disconnect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights only after the camera answers, and a camera that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-09-14",
@@ -259,7 +331,7 @@
     {
       "brand": "Datavideo",
       "product": "PTZ Camera Auto Tracking",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.0.1",
       "description": "Managed device driver for Datavideo PTZ cameras with auto-tracking, using the VISCA command set over serial or VISCA-over-IP (DVIP).",
       "category": "Cameras",
@@ -267,6 +339,16 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Datavideo header, stock Cognio controls.",
+            "Connect Offline replaces the Autoconnect, Connect and Disconnect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights only after the camera answers, and a camera that stops answering is dropped and retried.",
+            "Now has its own driver ID, so it can be imported alongside the Datavideo PTZ Camera driver. In 1.0.0 the two shared an ID, and importing one replaced the other in the Cognio device library. If you imported both, re-import this driver, then re-import Datavideo PTZ Camera if it is missing."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-09-14",
@@ -286,7 +368,7 @@
     {
       "brand": "Epson",
       "product": "Projector",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for Projectors that support Epson PJ Link protocol.",
       "category": "Video",
@@ -294,6 +376,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Epson header, stock Cognio controls.",
+            "Connect Offline replaces the Connect, Disconnect and Auto-Connect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights only after the projector answers, and a projector that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -313,7 +404,7 @@
     {
       "brand": "Genelec",
       "product": "Smart IP Speaker",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the Genelec Smart IP Speaker.",
       "category": "Speakers",
@@ -321,6 +412,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Genelec header, stock Cognio controls.",
+            "Connect Offline replaces Autoconnect: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights when the speaker answers and goes off after two missed replies. Blink is now Identify."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -340,7 +440,7 @@
     {
       "brand": "Global Cache",
       "product": "IP2CC",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the Global Cache IP2CC.",
       "category": "I/O",
@@ -348,6 +448,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Global Cache header, stock Cognio controls.",
+            "Connect Offline replaces the Connect button: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected (was Online) lights only after the unit answers, relay states are sent once it does, and a unit that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -367,7 +476,7 @@
     {
       "brand": "Inogeni",
       "product": "CAM Series",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for Inogeni CAM Series HDMI/USB camera selectors, routing between USB 1, USB 2, HDMI, and test pattern.",
       "category": "Cameras",
@@ -375,6 +484,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Inogeni header, stock Cognio controls.",
+            "Connect Offline replaces the Connect, Disconnect and Auto Connect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "The driver now uses the IP address typed on the panel, Connected lights only after the camera answers, and a camera that stops answering is dropped and retried. The Standby button now sends the camera's allow-standby setting."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -394,7 +512,7 @@
     {
       "brand": "Lab Gruppen",
       "product": "D Series Amplifier",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.0.1",
       "description": "Managed device driver for the Lab Gruppen D Series Amplifier.",
       "category": "Amplification",
@@ -402,6 +520,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Lab Gruppen header, stock Cognio controls.",
+            "Connect Offline replaces the Auto Connect button: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights only after the amplifier answers, and an amplifier that stops answering is dropped and retried. Changing the IP address now reconnects without reloading."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-09-14",
@@ -421,7 +548,7 @@
     {
       "brand": "NETIO",
       "product": "PDU",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.0.1",
       "description": "Managed device driver for the NETIO PDU.",
       "category": "Power",
@@ -438,6 +565,15 @@
         "PowerDIN 4PZ"
       ],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: NETIO header, stock Cognio controls, outputs and metering laid out as tables.",
+            "Connect Offline replaces the Connect, Disconnect and Auto-Connect buttons: online the driver always polls the PDU; offline it polls only while Connect Offline is on.",
+            "Connected lights only while the PDU answers its status poll; outputs and names are sent only while it is lit, and the totals readouts now show the PDU totals."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-09-14",
@@ -457,7 +593,7 @@
     {
       "brand": "Netvio",
       "product": "4x4 Video Matrix",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the Netvio 4x4 Video Matrix.",
       "category": "Video",
@@ -465,6 +601,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Netvio header, stock Cognio controls, routing laid out as aligned grids.",
+            "Connect Offline replaces the Connect, Disconnect and Autoconnect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights only after the matrix accepts the login, and a matrix that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -484,7 +629,7 @@
     {
       "brand": "PJLINK",
       "product": "Projector",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.0.1",
       "description": "Managed device driver for Projectors that support PJ Link protocol.",
       "category": "Video",
@@ -492,6 +637,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: PJLink header, stock Cognio controls.",
+            "Connect Offline replaces the Connect, Disconnect and Auto-Connect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights only after the projector answers, and a projector that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-09-14",
@@ -509,7 +663,7 @@
     {
       "brand": "Powersoft",
       "product": "Mezzo",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the Powersoft Mezzo amplifier.",
       "category": "Amplification",
@@ -517,6 +671,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Powersoft header, stock Cognio controls; the Connections, Inputs and Outputs tabs are now one page.",
+            "Script Names now follow the standard: Control IP is IPAddress and Flash Unit is Identify. Connect Offline works as before.",
+            "The IP address is checked before connecting."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-05",
@@ -537,7 +700,7 @@
     {
       "brand": "Renkus-Heinz",
       "product": "Iconyx",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the Renkus-Heinz Iconyx.",
       "category": "Speakers",
@@ -545,6 +708,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Renkus-Heinz header, stock Cognio controls.",
+            "Online the driver always connects; offline (designing in Cognio) it only talks to the speaker while Connect Offline is on.",
+            "Connected lights only after the speaker answers; a speaker that misses two replies is dropped and retried. The Aux 2 serial number field no longer shows the master MAC address."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -564,7 +736,7 @@
     {
       "brand": "Sennheiser",
       "product": "EW-DX",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the Sennheiser EW-DX.",
       "category": "Microphone",
@@ -572,6 +744,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Sennheiser header, stock Cognio controls; Identify is back on the panel.",
+            "Connect Offline replaces the Autoconnect, Connect and Disconnect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights only after the receiver answers, and a receiver that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -591,7 +772,7 @@
     {
       "brand": "Sennheiser",
       "product": "TCC-M",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the Sennheiser TCC-M.",
       "category": "Microphone",
@@ -599,6 +780,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Sennheiser header, stock Cognio controls.",
+            "Connect Offline replaces the Autoconnect button: online the driver always connects; offline it connects only while Connect Offline is on.",
+            "Connected lights only while the microphone answers; a microphone that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.0",
           "date": "2026-11-06",
@@ -617,8 +807,35 @@
     },
     {
       "brand": "Shure",
+      "product": "MXA310",
+      "version": "1.0.0",
+      "minVersion": "1.1.1",
+      "description": "Managed device driver for the Shure MXA310.",
+      "category": "Microphone",
+      "tested": "untested",
+      "author": "symetrix",
+      "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-17",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
+      "path": "Drivers/Shure/MXA310/Shure-MXA310.cogdriver",
+      "infoPath": "Drivers/Shure/MXA310/Shure-MXA310-Info.json",
+      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/MXA310/Shure-MXA310.cogdriver",
+      "screenshotPath": "Drivers/Shure/MXA310/Shure-MXA310.png",
+      "screenshotUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/MXA310/Shure-MXA310.png",
+      "brandLogoPath": "Drivers/Shure/Shure.png",
+      "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/Shure.png"
+    },
+    {
+      "brand": "Shure",
       "product": "ULXD4Q",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the Shure ULXD4Q 4-channel UHF wireless receiver.",
       "category": "Microphone",
@@ -626,6 +843,15 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.2",
+          "date": "2026-11-17",
+          "notes": [
+            "New standard panel: Shure header, stock Cognio controls.",
+            "Connect Offline replaces the Connect button: online the driver always connects; offline it connects only while Connect Offline is on. Flash is now Identify.",
+            "Connected lights only after the receiver answers, and a receiver that stops answering is dropped and retried."
+          ]
+        },
         {
           "version": "1.0.1",
           "date": "2026-11-09",
@@ -651,6 +877,33 @@
       "screenshotUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/ULXD4Q/Shure-ULXD4Q.png",
       "brandLogoPath": "Drivers/Shure/Shure.png",
       "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Shure/Shure.png"
+    },
+    {
+      "brand": "Soundtrack Your Brand",
+      "product": "Sound Zone",
+      "version": "1.0.0",
+      "minVersion": "1.1.1",
+      "description": "Managed integration driver for Soundtrack Your Brand, a cloud music streaming service (not a hardware device). Controls playback on Sound Zones via the Soundtrack API.",
+      "category": "Streaming",
+      "tested": "untested",
+      "author": "symetrix",
+      "otherSupportedProducts": [],
+      "releaseNotes": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-17",
+          "notes": [
+            "Initial release."
+          ]
+        }
+      ],
+      "path": "Drivers/Soundtrack Your Brand/Sound Zone/Soundtrack-Your-Brand.cogdriver",
+      "infoPath": "Drivers/Soundtrack Your Brand/Sound Zone/Soundtrack-Your-Brand-Info.json",
+      "downloadUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Soundtrack Your Brand/Sound Zone/Soundtrack-Your-Brand.cogdriver",
+      "screenshotPath": "Drivers/Soundtrack Your Brand/Sound Zone/Soundtrack-Your-Brand.png",
+      "screenshotUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Soundtrack Your Brand/Sound Zone/Soundtrack-Your-Brand.png",
+      "brandLogoPath": "Drivers/Soundtrack Your Brand/Soundtrack Your Brand.png",
+      "brandLogoUrl": "https://raw.githubusercontent.com/symetrix-audio/cognio-drivers-public/main/Drivers/Soundtrack Your Brand/Soundtrack Your Brand.png"
     }
   ]
 }

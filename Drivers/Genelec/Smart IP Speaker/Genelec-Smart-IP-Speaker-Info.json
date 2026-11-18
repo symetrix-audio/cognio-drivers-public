@@ -1,7 +1,7 @@
 {
   "brand": "Genelec",
   "product": "Smart IP Speaker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.1.1",
   "description": "Managed device driver for the Genelec Smart IP Speaker.",
   "category": "Speakers",
@@ -9,6 +9,15 @@
   "productUrl": "",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: Genelec header, stock Cognio controls.",
+        "Connect Offline replaces Autoconnect: online the driver always connects; offline it connects only while Connect Offline is on.",
+        "Connected lights when the speaker answers and goes off after two missed replies. Blink is now Identify."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-11-06",

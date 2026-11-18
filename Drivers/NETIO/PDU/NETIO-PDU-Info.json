@@ -1,7 +1,7 @@
 {
   "brand": "NETIO",
   "product": "PDU",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.0.1",
   "description": "Managed device driver for the NETIO PDU.",
   "category": "Power",
@@ -18,6 +18,15 @@
     "PowerDIN 4PZ"
   ],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: NETIO header, stock Cognio controls, outputs and metering laid out as tables.",
+        "Connect Offline replaces the Connect, Disconnect and Auto-Connect buttons: online the driver always polls the PDU; offline it polls only while Connect Offline is on.",
+        "Connected lights only while the PDU answers its status poll; outputs and names are sent only while it is lit, and the totals readouts now show the PDU totals."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-09-14",

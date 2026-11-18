@@ -1,7 +1,7 @@
 {
   "brand": "Lab Gruppen",
   "product": "D Series Amplifier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.0.1",
   "description": "Managed device driver for the Lab Gruppen D Series Amplifier.",
   "category": "Amplification",
@@ -9,6 +9,15 @@
   "productUrl": "",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: Lab Gruppen header, stock Cognio controls.",
+        "Connect Offline replaces the Auto Connect button: online the driver always connects; offline it connects only while Connect Offline is on.",
+        "Connected lights only after the amplifier answers, and an amplifier that stops answering is dropped and retried. Changing the IP address now reconnects without reloading."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-09-14",

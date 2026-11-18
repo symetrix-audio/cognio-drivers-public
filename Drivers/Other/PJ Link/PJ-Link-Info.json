@@ -1,7 +1,7 @@
 {
   "brand": "PJLINK",
   "product": "Projector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minVersion": "1.0.1",
   "description": "Managed device driver for Projectors that support PJ Link protocol.",
   "category": "Video",
@@ -9,6 +9,15 @@
   "productUrl": "",
   "otherSupportedProducts": [],
   "releaseNotes": [
+    {
+      "version": "1.0.1",
+      "date": "2026-11-17",
+      "notes": [
+        "New standard panel: PJLink header, stock Cognio controls.",
+        "Connect Offline replaces the Connect, Disconnect and Auto-Connect buttons: online the driver always connects; offline it connects only while Connect Offline is on.",
+        "Connected lights only after the projector answers, and a projector that stops answering is dropped and retried."
+      ]
+    },
     {
       "version": "1.0.0",
       "date": "2026-09-14",
