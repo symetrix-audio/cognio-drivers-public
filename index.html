@@ -220,12 +220,26 @@
   }
   .card .brand { color: var(--muted); font-size: 13px; margin: 0; }
   .card .desc { grid-column: 1; margin: 6px 0 0; font-size: 14px; }
-  .shot { grid-column: 1; margin: 12px 0 0; }
+  /* ---- Right rail: Download button with the screenshot thumbnail under it ----
+     The thumbnail fills whatever height the text column leaves below the
+     button (absolutely positioned, so it never makes the card taller) and
+     shows the top of the panel, cropped. Click it for the full image. */
+  .card .main { grid-column: 1; min-width: 0; }
+  .card .side {
+    grid-column: 2; grid-row: 1;
+    display: flex; flex-direction: column; gap: 10px;
+    width: 132px;
+  }
+  .shot {
+    position: relative; flex: 1 1 auto;
+    min-height: 84px; max-height: 220px;
+  }
   .shot img {
-    max-width: 220px; max-height: 140px; width: auto; height: auto;
-    display: block; object-fit: contain; background: #fff;
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    display: block; object-fit: cover; object-position: top center;
+    background: #fff;
     border: 1px solid var(--line); border-radius: 8px;
-    padding: 4px; cursor: zoom-in; transition: border-color .12s;
+    cursor: zoom-in; transition: border-color .12s;
   }
   .shot img:hover { border-color: var(--accent); }
 
@@ -275,7 +289,6 @@
   .badge.author { background: #fff; color: #33475b; box-shadow: inset 0 0 0 1px var(--line); }
 
   .dl {
-    grid-column: 2; grid-row: 1 / span 2; align-self: center;
     display: inline-flex; align-items: center; justify-content: center;
     background: var(--accent); color: var(--accent-ink);
     text-decoration: none; font-weight: 600; font-size: 14px;
@@ -322,7 +335,11 @@
     .layout { grid-template-columns: 1fr; }
     aside { position: static; }
     .card { grid-template-columns: 1fr; }
-    .dl { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 10px; }
+    .card .side {
+      grid-column: 1; grid-row: auto; width: auto;
+      flex-direction: row; align-items: flex-start; margin-top: 10px;
+    }
+    .shot { flex: none; width: 96px; height: 84px; }
     .consent { flex-direction: column; align-items: stretch; }
     .consent-actions button { flex: 1; }
   }
@@ -680,6 +697,7 @@
 
     var id = driverId(d);
     return '<article class="card" id="' + esc(id) + '">' +
+      '<div class="main">' +
       '<h3 class="title">' + esc(d.product || "Unnamed driver") +
         '<a class="permalink" href="#' + esc(id) + '" title="Copy a link to this driver">Copy link</a>' +
       '</h3>' +
@@ -696,9 +714,9 @@
       (d.description ? '<p class="desc">' + esc(d.description) + '</p>' : "") +
       others +
       productLink +
-      shot +
       notes +
-      dl +
+      '</div>' +
+      '<div class="side">' + dl + shot + '</div>' +
     '</article>';
   }
 
