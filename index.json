@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-11-18T15:47:30.991Z",
-  "sourceCommit": "772401709e3f69b0221f732ecab2ae3378ee0ca0",
+  "generatedAt": "2026-11-20T20:09:14.312Z",
+  "sourceCommit": "4e4a6fc94160e3a705d216950b4a51f0d953080f",
   "count": 25,
   "drivers": [
     {
@@ -78,7 +78,7 @@
     {
       "brand": "Audio-Technica",
       "product": "ATND1061",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "minVersion": "1.1.1",
       "description": "Managed device driver for the Audio-Technica ATND1061.",
       "category": "Microphone",
@@ -86,6 +86,16 @@
       "author": "symetrix",
       "otherSupportedProducts": [],
       "releaseNotes": [
+        {
+          "version": "1.0.2",
+          "date": "2026-11-20",
+          "notes": [
+            "Discover now steps to the next unit on each press, so several units can each get their own driver.",
+            "Fixed meters not updating when the mic is on a subnet wider than /24.",
+            "Fixed Discover finding nothing when testing offline in Site Manager.",
+            "Fixed Discover connecting twice to the unit it found."
+          ]
+        },
         {
           "version": "1.0.1",
           "date": "2026-11-09",
